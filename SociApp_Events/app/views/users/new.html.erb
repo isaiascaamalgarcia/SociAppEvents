@@ -1,0 +1,16 @@
+<h1>CREAR USUARIO</h1>
+<%= form_for(@user) do |f| %>
+	<div class="field">
+		<%= f.text_field :name, placeholder:"Nombre" %>
+	</div>
+	<div class="field">
+		<%= f.text_field :email, placeholder:"Email" %>
+	</div>
+	<div class="field">
+		<%= f.text_field :password, placeholder:"Contraseña" %>
+	</div>
+
+	<div class="field">
+		<%= f.submit "Guardar" %>
+	</div>
+<% end %>

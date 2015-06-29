@@ -1,0 +1,10 @@
+<!--<%= @users.inspect %>-->
+<% @users.each do |user| %>
+<h1><%= user.name %></h1>
+	<div>
+		<%= user.email %>
+	</div>
+	<div>
+		<%= user.password %>
+	</div>
+	<% end %>
