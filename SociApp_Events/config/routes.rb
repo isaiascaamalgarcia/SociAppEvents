@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'register/index'
-  resources:users
 
+  resources:users
+  #NO ES NECESARIO DESCOMENTAR EL RESOURCES:USERS YA RECONOCE TODOS LOS METODOS CRUD SOLO ES EJEMPLO
   #get "/users" index
-  post "/users" 
+  #post "/users" 
   #delete "/users/:id" delete--Destroy
   #get "/users/:id" show
   #post "/users/new" new
