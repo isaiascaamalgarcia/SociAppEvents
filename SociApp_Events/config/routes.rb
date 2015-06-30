@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'register/index'
 
   resources:users
 
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
   #post "/users" create
   #delete "/users/:id" delete--Destroy
   #get "/users/:id" show
+  #get "/users/new" new
   #get "/users/:id/edit" edit
   #patch "users/:id" update
   #put "users/:id" update  
