@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources:users
 
   #get "/users" index
-  #post "/users" create
+  post "/users" 
   #delete "/users/:id" delete--Destroy
   #get "/users/:id" show
-  #get "/users/new" new
+  #post "/users/new" new
   #get "/users/:id/edit" edit
   #patch "users/:id" update
   #put "users/:id" update  

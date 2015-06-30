@@ -21,16 +21,16 @@
 
 		<h1>Registro</h1>
 		<hr>
-		<form action="#" method="POST">
+		<form accept-charset="UTF-8" id="insertForm" action="/users" method="POST" data-remote="true">
 
 			<label>Correo</label><br>	
-			<input type="text" name="email" placeholder="E-mail"><br>
+			<input type="text" name="user[email]" placeholder="E-mail"><br>
 			<label>Contraseña</label><br>
-			<input type="password" name="password" placeholder="Contraseña"><br>
+			<input type="password" name="user[password]" placeholder="Contraseña"><br>
 			<label>Repetir Contraseña</label><br>
-			<input type="password" name="password2" placeholder="Repetir contraseña"><br>
+			<input type="password" name="user[password2]" placeholder="Repetir contraseña"><br>
 			<label>Nombre completo</label><br>
-			<input type="text" name="name" placeholder="Nombre completo"><br>
+			<input type="text" name="user[name]" placeholder="Nombre completo"><br>
 	
 			<hr>
 			<input type="submit" value="Listo">
