@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources:users
 
   #get "/users" index
-  post "/users" 
+  #post "/users" 
   #delete "/users/:id" delete--Destroy
   #get "/users/:id" show
   #post "/users/new" new

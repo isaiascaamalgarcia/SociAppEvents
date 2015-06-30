@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+
+ /*Estilos Generals CSS*/
+@import url(css.css);
+@import url(api.css);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  background-color: #B0CEC4;
+  color: #606468;
+  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+  margin: 0;
+  min-height: 100%;
+}
+a {
+  color: #FFFCAA;
+  outline: 0;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  text-decoration: underline;
+}
+input {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+}
+h1 { 
+  margin: 1rem auto;
+  margin-left: 1em auto;
+  font-size: 40px;
+  color: #111; font-family: 'Helvetica Neue', sans-serif; 
+  font-weight: bold; letter-spacing: -1px; 
+  line-height: 1; 
+  color: #5D4037;
+}
+input[type="password"], .form input[type="text"], .form input[type="submit"] {
+  width: 100%;
+}
+label,
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+	border-radius: 0.25rem;
+	color: #606468;
+	padding: 1rem;
+}
+label {
+	font-size: 18px;
+	color: #fff;
+	background-color: #5D4037;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	padding-left: 1.25em;
+	width: 3.5em;
+}
+input[type="text"],
+input[type="password"] {
+	background-color: #FFFCAA;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+.formulario {
+	width:20rem;
+	margin: 2rem auto;
+	padding: 0;
+}
+.container {
+	background: red;
+}
+a{
+	color: blue;
+	font-weight: bold;
+	font-size: .8rem;
+
+}
+input[type="text"]:focus,
+input[type="text"]:hover{
+	background: #FFFCAA;
+}
+input[type="submit"] {
+	background-color: #5D4037;
+	color: #FFFCAA;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+input[type="submit"]:focus,
+input[type="submit"]:hover{
+	background: #795548;
+}
