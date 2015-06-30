@@ -17,7 +17,11 @@ class UsersController < ApplicationController
 		@user=User.new(name:params[:user][:name],
 			email:params[:user][:email],
 			password:params[:user][:password])
-	@user.save
-	redirect_to @user
+	if @user.save
+		redirect_to @user
+
+	else
+		render :new
+		end
 	end
 end
