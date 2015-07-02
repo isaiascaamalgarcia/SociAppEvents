@@ -5,7 +5,13 @@ class UsersController < ApplicationController
 	end
 	#GET /users/:id
 	def show
-		@user=User.find(params[:id])
+
+		begin
+			@user = User.find params[:id]
+		rescue
+
+		end
+
 	end
 	#GET users/new  --> Busca una accion new en el controlador, va a permirit crear un nuevo usuario
 	def new

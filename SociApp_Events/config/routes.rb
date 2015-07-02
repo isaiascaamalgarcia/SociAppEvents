@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'register/index'
   resources:users
 
   #get "/users" index
