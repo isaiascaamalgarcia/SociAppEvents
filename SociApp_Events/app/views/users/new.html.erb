@@ -16,25 +16,34 @@
 <% end %>
 -->
 
-<section class="container">
+<section class="site__container">
 	<div class="formulario">
 
 		<h1>Registro</h1>
-		<hr>
-		<form accept-charset="UTF-8" id="insertForm" action="/users" method="POST" data-remote="true">
+		<form id="insertForm" class="form" action="#">
 
-			<label>Correo</label><br>	
-			<input type="text" name="user[email]" placeholder="E-mail"><br>
-			<label>Contraseña</label><br>
-			<input type="password" name="user[password]" placeholder="Contraseña"><br>
-			<label>Repetir Contraseña</label><br>
-			<input type="password" name="user[password2]" placeholder="Repetir contraseña"><br>
-			<label>Nombre completo</label><br>
-			<input type="text" name="user[name]" placeholder="Nombre completo"><br>
-	
+			<div class="form__field">
+				<label>@</label>
+				<input type="text" name="email" placeholder="E-mail" required>
+			</div>
+
+			<div class="form__field">
+				<label class="fontawesome-lock"></label>
+				<input type="password" name="password" placeholder="Contraseña" required>
+			</div>
+
+			<div class="form__field">
+				<label class="fontawesome-lock"></label>
+				<input type="password" name="password2" placeholder="Repetir contraseña" required>
+			</div>
+
+			<div class="form__field">
+				<label class="fontawesome-user"></label>
+				<input type="text" name="name" placeholder="Nombre completo" required><br>
+			</div>
 			<hr>
 			<input type="submit" value="Listo">
-			<a href="/users">Ya tengo una cuenta</a>
+			<a href="#">Ya tengo una cuenta</a>
 
 		</form>
 	</div>
