@@ -11,10 +11,7 @@ Rails.application.routes.draw do
   #patch "users/:id" update
   #put "users/:id" update  
   
-  devise_scope :user do
-      post 'sessions' => 'sessions#create', :as => 'login'
-      delete 'sessions' => 'sessions#destroy', :as => 'logout'
-  end
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
