@@ -20,31 +20,56 @@
 	<div class="formulario">
 
 		<h1>Registro</h1>
-		<form id="insertForm" class="form" action="#">
-
+		<hr>
+		<form class="form" name="frm" accept-charset="UTF-8" id="insertForm" action="/users" method="POST" data-remote="true">
 			<div class="form__field">
 				<label>@</label>
-				<input type="text" name="email" placeholder="E-mail" required>
+				<input type="text" name="user[email]" placeholder="E-mail" required>
 			</div>
-
 			<div class="form__field">
 				<label class="fontawesome-lock"></label>
-				<input type="password" name="password" placeholder="Contraseña" required>
+				<input type="password" name="user[password]" placeholder="Contraseña" required>
 			</div>
-
 			<div class="form__field">
 				<label class="fontawesome-lock"></label>
-				<input type="password" name="password2" placeholder="Repetir contraseña" required>
+				<input type="password" name="user[password2]" placeholder="Repetir contraseña" required>
 			</div>
-
 			<div class="form__field">
 				<label class="fontawesome-user"></label>
-				<input type="text" name="name" placeholder="Nombre completo" required><br>
+				<input type="text" name="user[name]" placeholder="Nombre completo" required>
 			</div>
+	
 			<hr>
-			<input type="submit" value="Listo">
-			<a href="#">Ya tengo una cuenta</a>
+			<input type="submit" value="Listo" onclick="return validation();" />
+			<a href="/users">Ya tengo una cuenta</a>
 
 		</form>
 	</div>
 	</section>
+	<script type="text/javascript">
+	function validation() {
+		var pass = document.getElementById("insertForm");
+		
+			if(pass[1].value == "") {
+				alert("Ingresaa la contraseña.");
+				return false;
+			}
+			if((pass[1].value).length < 8){
+			alert("La contraseña es minimo de 8 caracteres.");
+			pass.focus();
+			return false;
+			}
+			if(pass[1].value == "") {
+				alert("Debe confirmar la contraseña.")
+				return false;
+			}
+			if(pass[1].value != pass[2].value) {
+				alert("La contraseña no coincide.");
+				return false;
+			}
+			return true;
+		
+		
+		
+	}
+	</script>
