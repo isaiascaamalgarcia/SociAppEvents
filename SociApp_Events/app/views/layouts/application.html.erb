@@ -7,6 +7,14 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
+
+	<% if member_signed_in? %>
+		<%= link_to "Cerrar sesión", destroy_member_session_path, method: :delete %>
+		<%else%>
+		<li><%= link_to "Iniciar sesión", new_member_session_path%></li>
+		<li><%= link_to "Crear cuenta", new_member_registration_path%></li>
+		
+	<%end %>
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
