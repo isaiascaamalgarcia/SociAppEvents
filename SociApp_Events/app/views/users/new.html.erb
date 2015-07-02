@@ -1,27 +1,11 @@
-<!--<h1>CREAR USUARIO</h1>
-<%= form_for(@user) do |f| %>
-	<div class="field">
-		<%= f.text_field :name, placeholder:"Nombre" %>
-	</div>
-	<div class="field">
-		<%= f.text_field :email, placeholder:"Email" %>
-	</div>
-	<div class="field">
-		<%= f.text_field :password, placeholder:"Contraseña" %>
-	</div>
 
-	<div class="field">
-		<%= f.submit "Guardar" %>
-	</div>
-<% end %>
--->
 
 <section class="container">
 	<div class="formulario">
 
 		<h1>Registro</h1>
 		<hr>
-		<form accept-charset="UTF-8" id="insertForm" action="/users" method="POST" data-remote="true">
+		<form accept-charset="UTF-8" action="/users" method="POST" data-remote="true">
 
 			<label>Correo</label><br>	
 			<input type="text" name="user[email]" placeholder="E-mail"><br>
