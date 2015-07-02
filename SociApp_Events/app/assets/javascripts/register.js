@@ -1,4 +1,4 @@
-$('#insertForm').on('submit', function(e){
+$('#insertForm').submit(function () {
 var formulario = document.getElementById('insertForm');
 
 var datos = {};
@@ -16,6 +16,7 @@ for(var i = 0; i < formulario.length; i++){
         url  :  "/users",
             success: function(data){
                 console.log(data);
+                alert('Se hizo');
             },
             error: function(data){
                 console.log(data);
