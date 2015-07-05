@@ -17,24 +17,25 @@
         <form class="form" name="frm" accept-charset="UTF-8" id="insertForm">
             <div class="form__field">
                 <label>@</label>
-                <input type="text" name="email" placeholder="E-mail" required>
+                <input type="text" name="email" id="email" placeholder="E-mail" required>
             </div>
             <div class="form__field">
                 <label class="fontawesome-lock"></label>
-                <input type="password" name="password" placeholder="Contraseña" required>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required>
             </div>
             <div class="form__field">
                 <label class="fontawesome-lock"></label>
-                <input type="password" name="password2" placeholder="Repetir contraseña" required>
+                <input type="password" name="password2" id="password2" placeholder="Repetir contraseña" required>
             </div>
             <div class="form__field">
                 <label class="fontawesome-user"></label>
-                <input type="text" name="name" placeholder="Nombre completo" required>
+                <input type="text" name="name" id="name" placeholder="Nombre completo" required>
             </div>
 
             <hr>
-            <input type="submit" value="Listo" />
-            <a href="/users">Ya tengo una cuenta</a>
+
+            <button id="save" type="button" class="myButton">Listo</button>
+            <a href="/assets/login.html">Ya tengo una cuenta</a>
 
         </form>
     </div>
