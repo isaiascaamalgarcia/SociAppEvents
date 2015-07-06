@@ -14,21 +14,19 @@
     <div class="grid__container">
         <h1>Inicio de sesión</h1>
 
-        <form class="form form--login">
+        <form class="form form--login" id="loginForm">
             <div class="form__field">
-                <label class="fontawesome-user" for="login__username"><span class="hidden">Username</span></label>
-                <input id="login__username" type="text" class="form__input" id="username" placeholder="Email"
-                       name="usuario" required>
+                <label class="fontawesome-user" for="username"><span class="hidden">Username</span></label>
+                <input id="user" type="text" class="form__input" placeholder="Email" name="email" required>
             </div>
 
             <div class="form__field">
-                <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
-                <input id="login__password" type="password" class="form__input" placeholder="Contraseña"
-                       name="contrasena" required>
+                <label class="fontawesome-lock" for="password"><span class="hidden">Password</span></label>
+                <input id="pass" type="password" class="form__input" placeholder="Contraseña" name="password" required>
             </div>
 
             <div class="form__field">
-                <input type="submit" value="Sign In">
+                <button id="save" type="button" class="myButton">Listo</button>
             </div>
 
         </form>

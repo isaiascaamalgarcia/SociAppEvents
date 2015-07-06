@@ -1,27 +1,3 @@
-$('#insertForm').on('submit', function(e){
-var formulario = document.getElementById('insertForm');
-
-var datos = {};
-for(var i = 0; i < formulario.length; i++){
-    if(formulario[i].name){
-        datos[formulario[i].name] = formulario[i].value
-    }
-}   console.log(datos);
-    e.preventDefault();
-    $.ajax({
-        type :  "POST",
-        contentType: 'application/json',
-        dataType: 'JSON',
-        data: JSON.stringify(datos),
-        url  :  "/users",
-            success: function(data){
-                console.log(data);
-            },
-            error: function(data){
-                console.log(data);
-            }
-    });
-});
 var $x = $('#save');
 var aux=false;
 
@@ -54,6 +30,7 @@ $x.click(function(evt) {
             dataType: 'JSON',
             data: JSON.stringify(myObj),
             success : function(data) {
+            location.href= 'dashboard.html';
             console.log(data);
             },
             error : function() {
