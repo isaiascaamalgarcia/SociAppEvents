@@ -31,10 +31,12 @@ $x.click(function(evt) {
 
                     if(formPost[i].name){
                        myObj[formPost[i].name] = formPost[i].value
+
                     }
              }
         console.log(myObj);
-
+        localStorage.setItem('email', formPost[0].value)
+        localStorage.setItem('password', formPost[1].value);
 
             $.ajax({
                 url:'/accessTokens',
@@ -43,8 +45,9 @@ $x.click(function(evt) {
                 dataType: 'JSON',
                 data: JSON.stringify(myObj),
                 success : function(data) {
-                location.href= 'dashboard.html';
-                console.log(data);
+                    location.href= 'dashboard.html';
+                    console.log(data);
+
                 },
                 error : function() {
                 console.log("An error ocurred");

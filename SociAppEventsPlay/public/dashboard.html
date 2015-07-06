@@ -3,8 +3,34 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>SocciApp events</title>
+    <script>
+    function load() {
+    var userStorageValue = localStorage.getItem('user');
+    var passStorageValue = localStorage.getItem('password');
+    if(userStorageValue && passStorageValue) {
+    var data = {'email': userStorageValue,
+                'password': passStorageValue
+                }
+        $.ajax({
+            url:'/accessTokens',
+            type :  "POST",
+            contentType: 'application/json',
+            dataType: 'JSON',
+            data: JSON.stringify(data),
+            success : function(data) {
+                location.href= 'dashboard.html';
+                console.log(data);
+
+            },
+            error : function() {
+            console.log("An error ocurred");
+            }
+        });
+    }
+</script>
 </head>
-<body>
+<body onload="load()">
     <h1>Dashboard</h1>
 </body>
+
 </html>
