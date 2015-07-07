@@ -1,9 +1,10 @@
-package eduardo.com.example.acer.sociappevents.REST;
+package eduardo.com.example.acer.sociappevents.Rest;
 
 /**
  * Created by LUIS ANGEL on 02/07/2015.
  */
 public class AccesToken {
+
     public String getToken() {
         return token;
     }

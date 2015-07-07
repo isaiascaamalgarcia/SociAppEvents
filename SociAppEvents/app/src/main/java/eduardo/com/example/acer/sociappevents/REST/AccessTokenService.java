@@ -1,4 +1,4 @@
-package eduardo.com.example.acer.sociappevents.REST;
+package eduardo.com.example.acer.sociappevents.Rest;
 
 import retrofit.Callback;
 import retrofit.http.Body;
@@ -9,7 +9,7 @@ import retrofit.http.POST;
  */
 
 public interface AccessTokenService {
-  @POST("/members/sign_in")
+  @POST("/accessTokens")
 
   public void createAccessToken (@Body Credentials credentials, Callback<AccesToken> cb);
 
