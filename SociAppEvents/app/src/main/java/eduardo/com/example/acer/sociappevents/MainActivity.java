@@ -13,9 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import eduardo.com.example.acer.sociappevents.REST.AccesToken;
-import eduardo.com.example.acer.sociappevents.REST.AccessTokenService;
-import eduardo.com.example.acer.sociappevents.REST.Credentials;
+import eduardo.com.example.acer.sociappevents.Rest.AccesToken;
+import eduardo.com.example.acer.sociappevents.Rest.AccessTokenService;
+import eduardo.com.example.acer.sociappevents.Rest.Credentials;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -33,49 +33,64 @@ public class MainActivity extends RoboActivity {
     @InjectView(R.id.editText2)
     private EditText contrasenia;
     private Toolbar toolbar;
-    private boolean deviceLearnedToken;
-    private boolean fromsavedinstancestate;
+    private String getPreferencia;
+    private String tokenObtenido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        deviceLearnedToken = Boolean.valueOf(readFromPreferences(getApplicationContext(),"false"));
-        if (savedInstanceState!=null){
-            fromsavedinstancestate=true;
-        }
-        setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String email= usuario.getText().toString();
-                final String pasword= contrasenia.getText().toString();
-                Credentials credentials = new Credentials();
-                credentials.setEmail(email);
-                credentials.setPassword(pasword);
-                RestAdapter adapter = new RestAdapter.Builder().setEndpoint("Localhost:3000").build();
-                AccessTokenService service= adapter.create(AccessTokenService.class);
-                service.createAccessToken(credentials, new Callback<AccesToken>() {
-                    @Override
-                    public void success(AccesToken accesToken, Response response) {
-                        Toast.makeText(MainActivity.this,"acceso correcto" + accesToken.getToken(),Toast.LENGTH_LONG).show();
+            setContentView(R.layout.activity_main);
+            toolbar = (Toolbar) findViewById(R.id.app_bar);
+            cargarPreferencias();
+            loginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String email = usuario.getText().toString();
+                    final String password = contrasenia.getText().toString();
+                    Credentials credentials = new Credentials();
+                    credentials.setEmail(email);
+                    credentials.setPassword(password);
+                    RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.0.5:9000").build();
+                    AccessTokenService service = adapter.create(AccessTokenService.class);
+                    service.createAccessToken(credentials, new Callback<AccesToken>() {
+                        @Override
+                        public void success(AccesToken accesToken, Response response) {
+                            tokenObtenido = accesToken.getToken();
+                            guardarPreferencias(tokenObtenido);
+                            Toast.makeText(MainActivity.this, "acceso correcto" + accesToken.getToken(), Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), Dashboard.class));
 
-                        if (!deviceLearnedToken){
-                            deviceLearnedToken=true;
-                            saveToPreferences(getApplicationContext(),accesToken.getToken());
-                            startActivity(new Intent(getApplicationContext(),Dashboard.class));
                         }
-                    }
+                        @Override
+                        public void failure(RetrofitError error) {
+                            //Toast.makeText(MainActivity.this,"Acceso denegado para el correo "+email+" y contrasena "+ pasword +", osn Incorrectos",Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            });
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        Toast.makeText(MainActivity.this,"Acceso denegado para el correo "+email+" y contraseña "+ pasword +", osn Incorrectos",Toast.LENGTH_LONG).show();
-                    }
-                });
+    }
 
+    public void cargarPreferencias(){
+        SharedPreferences miPreferencia = getSharedPreferences("preferenceToken",Context.MODE_PRIVATE);
+        getPreferencia = miPreferencia.getString("token","");
+        try {
+            if (getPreferencia.isEmpty()) {
+                Toast.makeText(MainActivity.this, "Es necesario iniciar sesion", Toast.LENGTH_LONG).show();
+            }else{
+                startActivity(new Intent(getApplicationContext(), Dashboard.class));
             }
-        });
-        //setSupportActionBar(toolbar);
+        }catch(Exception e){}
+    }
+
+    public void guardarPreferencias(String token){
+        SharedPreferences miPreferencia = getSharedPreferences("preferenceToken", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = miPreferencia.edit();
+        editor.putString("token",token);
+        editor.commit();
+
+
     }
 
     @Override
@@ -96,23 +111,12 @@ public class MainActivity extends RoboActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_cerrar) {
+            Toast.makeText(this, "Se cerrara la sesion", Toast.LENGTH_LONG).show();
+
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void saveToPreferences(Context context,String preferenceValue){
-
-        SharedPreferences sharedPreferences = context.getSharedPreferences("settoken",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("settoken",preferenceValue);
-        editor.apply();
-
-    }
-
-    public static String readFromPreferences(Context context, String defaultValue){
-
-        SharedPreferences sharedPreferences = context.getSharedPreferences("gettoken",Context.MODE_PRIVATE);
-
-        return sharedPreferences.getString("gettoken", defaultValue);
     }
 }
