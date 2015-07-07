@@ -19,9 +19,6 @@ $x.click(function(evt) {
                     }
              }
         console.log(myObj);
-        localStorage.setItem('email', formPost[0].value)
-        localStorage.setItem('password', formPost[1].value);
-
             $.ajax({
                 url:'/accessTokens',
                 type :  "POST",
@@ -30,6 +27,7 @@ $x.click(function(evt) {
                 data: JSON.stringify(myObj),
                 success : function(data) {
                     location.href= 'dashboard.html';
+                    localStorage.setItem('token',data.token);
                     console.log(data);
 
                 },
@@ -41,24 +39,16 @@ $x.click(function(evt) {
 
     function load() {
 
-        var userStorageValue = localStorage.getItem('email');
-        var passStorageValue = localStorage.getItem('password');
-        if(userStorageValue && passStorageValue) {
-            var data = {'email': userStorageValue,
-                        'password': passStorageValue
-                        }
+        var tokenStorageValue = localStorage.getItem('token');
+        if(tokenStorageValue) {
             location.href="dashboard.html";
         }
     }
 
     function dashLoad() {
 
-            var userStorageValue = localStorage.getItem('email');
-            var passStorageValue = localStorage.getItem('password');
-            if(!userStorageValue && !passStorageValue) {
-                var data = {'email': userStorageValue,
-                            'password': passStorageValue
-                            }
+            var tokenStorageValue = localStorage.getItem('token');
+            if(!tokenStorageValue) {
                 location.href="login.html";
             }
         }
