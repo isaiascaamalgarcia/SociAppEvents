@@ -10,6 +10,13 @@ create table access_token (
   constraint pk_access_token primary key (id))
 ;
 
+create table event (
+  id                        integer auto_increment not null,
+  name                      varchar(255),
+  description               varchar(255),
+  constraint pk_event primary key (id))
+;
+
 create table user (
   id                        integer auto_increment not null,
   name                      varchar(255),
@@ -28,6 +35,8 @@ create index ix_access_token_user_1 on access_token (user_id);
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table access_token;
+
+drop table event;
 
 drop table user;
 

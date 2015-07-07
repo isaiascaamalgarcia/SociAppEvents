@@ -8,5 +8,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="SBT: javax.persistence:persistence-api:1.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: com.typesafe.play:play-ebean_2.11:1.0.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.springframework:spring-context:4.1.6.RELEASE:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.avaje.ebeanorm:avaje-ebeanorm:4.6.2:jar" level="project" />
   </component>
 </module>
