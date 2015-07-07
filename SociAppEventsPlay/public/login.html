@@ -41,6 +41,7 @@
 <script src="javascripts/postUserToken.js"></script>
 <script>
     function load() {
+    alert("ENTRO LOAD");
     var userStorageValue = localStorage.getItem('user');
     var passStorageValue = localStorage.getItem('password');
     if(userStorageValue && passStorageValue) {
@@ -54,7 +55,7 @@
             dataType: 'JSON',
             data: JSON.stringify(data),
             success : function(data) {
-                location.href= 'dashboard.html';
+                location.href= '/assets/login.html';
                 console.log(data);
 
             },
