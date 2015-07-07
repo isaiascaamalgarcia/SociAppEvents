@@ -15,16 +15,20 @@
 <nav>
     <ul class="menu">
         <li><a href="#" class="fontawesome-user"> Usuario</a></li>
-        <li><a href="#" class="fontawesome-plus"> Agregar Evento</a></li>
+        <li><a href="#" class="fontawesome-plus" onclick="showForm()"> Agregar Evento</a></li>
         <li id="clear"><a href="#" class="fontawesome-signout"> Cerrar Session</a></li>
 
     </ul>
 </nav>
 
-<div class="event">
+<div class="event" id="events">
     <div class="form--field">
         <label class="fontawesome-calendar"></label>
         <input type="text" placeholder="Nombre del evento">
+    </div>
+    <div class="form--field">
+        <label class="fontawesome-calendar"></label>
+        <input type="text" placeholder="Fecha del evento">
     </div>
     <div class="form--field">
         <label class="fontawesome-pencil"></label>
@@ -32,6 +36,7 @@
     </div>
     <div class="form--field">
         <input type="submit" value="Guardar">
+        <button onclick="hiddenForm()">Cancelar</button>
     </div>
 
 </div>

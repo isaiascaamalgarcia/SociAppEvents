@@ -79,9 +79,10 @@ nav.mostrar {
 	padding-left: 15em;
 	padding-right: 2em;
 	font-family:Times New Roman;
+	display: none;
 }
 
-input {
+input, button {
   border: 0;
   color: inherit;
   font: inherit;
@@ -97,7 +98,7 @@ input {
 .event label,
 .event input[type="text"],
 .event input[type="password"],
-.event input[type="submit"], textarea {
+.event input[type="submit"], textarea, .event button {
   border-radius: 0.25rem;
   color: gray;
   padding: 1rem;
@@ -117,13 +118,13 @@ input {
 .event input[type="text"]:focus, .event input[type="text"]:hover, .event input[type="password"]:focus, .event input[type="password"]:hover, textarea {
   background-color: #FFFCAA;
 }
-.event input[type="submit"] {
+.event input[type="submit"], .event button {
   background-color: #5D4037;
   color: #FFFCAA;
   font-weight: bold;
   text-transform: uppercase;
 }
-.event input[type="submit"]:focus, .event input[type="submit"]:hover {
+.event input[type="submit"]:focus, .event input[type="submit"]:hover, .event button:focus, .event button:hover {
   background-color: #795548;
 }
 .form--field {
