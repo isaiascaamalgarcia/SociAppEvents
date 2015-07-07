@@ -1,0 +1,35 @@
+header {
+	text-align: center;
+}
+nav {
+	margin: 2em 0;
+	width: 90%;
+}
+nav ul {
+	background: #333;
+	border-radius: 3px;
+	box-shadow: 0 -3px #000 inset,
+				0 1px #444 inset,
+				0 2px #666 inset;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	height: 2.5rem;
+}
+nav li {
+	float: left;
+}
+nav li a {
+	color: #fff;
+	font-family: verdana;
+	font-size: .8rem;
+	line-height: 2.5rem;
+	text-decoration: none;
+	display: block;
+	padding: 0 2rem;
+	box-shadow: 1px 0 rgba(0,0,0,.8),
+				2px 0 rgba(255,255,255,.1);
+}
+nav li a:hover {
+	background: rgba(0,0,0,.4);
+}
