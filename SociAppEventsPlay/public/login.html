@@ -39,32 +39,6 @@
 </div>
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/postUserToken.js"></script>
-<script>
-    function load() {
-    alert("ENTRO LOAD");
-    var userStorageValue = localStorage.getItem('user');
-    var passStorageValue = localStorage.getItem('password');
-    if(userStorageValue && passStorageValue) {
-    var data = {'email': userStorageValue,
-                'password': passStorageValue
-                }
-        $.ajax({
-            url:'/accessTokens',
-            type :  "POST",
-            contentType: 'application/json',
-            dataType: 'JSON',
-            data: JSON.stringify(data),
-            success : function(data) {
-                location.href= '/assets/login.html';
-                console.log(data);
 
-            },
-            error : function() {
-            console.log("An error ocurred");
-            }
-        });
-    }
-}
-</script>
 </body>
 </html>

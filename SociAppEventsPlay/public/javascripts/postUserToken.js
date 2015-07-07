@@ -54,3 +54,27 @@ $x.click(function(evt) {
                 }
             });
 });
+
+    function load() {
+
+        var userStorageValue = localStorage.getItem('email');
+        var passStorageValue = localStorage.getItem('password');
+        if(userStorageValue && passStorageValue) {
+            var data = {'email': userStorageValue,
+                        'password': passStorageValue
+                        }
+            location.href="dashboard.html";
+        }
+    }
+
+    function dashLoad() {
+
+            var userStorageValue = localStorage.getItem('email');
+            var passStorageValue = localStorage.getItem('password');
+            if(!userStorageValue && !passStorageValue) {
+                var data = {'email': userStorageValue,
+                            'password': passStorageValue
+                            }
+                location.href="login.html";
+            }
+        }
