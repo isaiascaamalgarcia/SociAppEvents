@@ -16,6 +16,7 @@ body {
 	margin: 2em auto;
 	padding-left: 0;
 	width: 15em;
+	font-family:Times New Roman;
 }
 .menu a {
 	color: #ddd;
@@ -66,19 +67,18 @@ nav.mostrar {
 	background-size: contain;
 	background-repeat: no-repeat;
 	cursor: pointer;
-	left: 4em;
-	height: 70px;
+	left: 5em;
+	height: 90px;
 	position: absolute;
 	top: 1em;
-	width: 70px;
+	width: 90px;
 	z-index: 30;
 }
 .event {
-	
 	margin: auto;
 	padding-left: 15em;
 	padding-right: 2em;
-
+	font-family:Times New Roman;
 }
 
 input {
@@ -99,7 +99,7 @@ input {
 .event input[type="password"],
 .event input[type="submit"], textarea {
   border-radius: 0.25rem;
-  color: #FFFCAA;
+  color: gray;
   padding: 1rem;
 }
 .event label {
@@ -135,4 +135,8 @@ input {
 }
 .form--field {
 	text-align: center;
+}
+
+.aux{
+background-color:black;
 }
