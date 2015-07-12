@@ -15,3 +15,9 @@ DELETE     /users/:id             controllers.UserController.deleteUser(id:Integ
 PUT        /users/:id             controllers.UserController.updateUser(id:Integer)
 
 POST       /accessTokens          controllers.AccessTokenController.createAccessToken()
+
+
+POST       /users/:id/my-events               controllers.EventController.createEvent(id:Integer)
+GET        /users/:id/events                  controllers.EventController.getUserEvent(id:Integer)
+#POST      /users/:id/my-events/:id/guests    controllers.EventController.inviteUser(id1:Integer,id2:Integer)
+

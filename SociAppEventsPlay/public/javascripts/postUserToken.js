@@ -12,7 +12,6 @@ $x.click(function(evt) {
     var formPost = document.getElementById('loginForm');
             var myObj = {};
                 for(var i = 0; i < formPost.length; i++){
-
                     if(formPost[i].name){
                        myObj[formPost[i].name] = formPost[i].value
 
@@ -28,6 +27,7 @@ $x.click(function(evt) {
                 success : function(data) {
                     location.href= 'dashboard.html';
                     localStorage.setItem('token',data.token);
+                    localStorage.setItem('user_id',data.user.id);
                     console.log(data);
 
                 },

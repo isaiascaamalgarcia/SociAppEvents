@@ -1,21 +1,32 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Event extends Model {
     @Id
     private Integer id;
     private String name;
-    /*@Temporal(TemporalType.DATE)
-    private Date day; */
+
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY/MM/dd")
+    private Date day;
     private String description;
+
+    @JsonIgnore
+    @ManyToOne
+    private User host;
+
+    @JsonIgnore
+    @ManyToMany
+    private List<User> guests;
 
     public Integer getId() {
         return id;
@@ -33,11 +44,35 @@ public class Event extends Model {
         this.name = name;
     }
 
+    public Date getDay() {
+        return day;
+    }
+
+    public void setDay(Date day) {
+        this.day = day;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getHost() {
+        return host;
+    }
+
+    public void setHost(User host) {
+        this.host = host;
+    }
+
+    public List<User> getGuests() {
+        return guests;
+    }
+
+    public void setGuests(List<User> guests) {
+        this.guests = guests;
     }
 }
