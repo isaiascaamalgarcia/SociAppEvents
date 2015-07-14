@@ -3,6 +3,7 @@ package models;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import play.data.format.Formats;
 
 
 import javax.persistence.*;
@@ -15,9 +16,14 @@ public class Event extends Model {
     private Integer id;
     private String name;
 
+
     @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY/MM/dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-DD")
     private Date day;
+
+    /*@Formats.DateTime(pattern = "dd/MM/yyyy")
+    private Date dueDate = new Date();*/
+
     private String description;
 
     @JsonIgnore
@@ -28,6 +34,15 @@ public class Event extends Model {
     @ManyToMany
     private List<User> guests;
 
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -36,20 +51,15 @@ public class Event extends Model {
         this.id = id;
     }
 
+    public static Finder<Integer, Event> find =
+            new Finder(Event.class);
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getDay() {
-        return day;
-    }
-
-    public void setDay(Date day) {
-        this.day = day;
     }
 
     public String getDescription() {

@@ -4,23 +4,24 @@
 # --- !Ups
 
 create table access_token (
-  id                        integer not null,
+  id                        integer auto_increment not null,
   token                     varchar(255),
   user_id                   integer,
+  id_user                   integer,
   constraint pk_access_token primary key (id))
 ;
 
 create table event (
-  id                        integer not null,
+  id                        integer auto_increment not null,
   name                      varchar(255),
-  day                       timestamp,
+  due_date                  datetime(6),
   description               varchar(255),
   host_id                   integer,
   constraint pk_event primary key (id))
 ;
 
 create table user (
-  id                        integer not null,
+  id                        integer auto_increment not null,
   name                      varchar(255),
   email                     varchar(255),
   password                  varchar(255),
@@ -33,12 +34,6 @@ create table event_user (
   user_id                        integer not null,
   constraint pk_event_user primary key (event_id, user_id))
 ;
-create sequence access_token_seq;
-
-create sequence event_seq;
-
-create sequence user_seq;
-
 alter table access_token add constraint fk_access_token_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;
 create index ix_access_token_user_1 on access_token (user_id);
 alter table event add constraint fk_event_host_2 foreign key (host_id) references user (id) on delete restrict on update restrict;
@@ -52,21 +47,15 @@ alter table event_user add constraint fk_event_user_user_02 foreign key (user_id
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists access_token;
+drop table access_token;
 
-drop table if exists event;
+drop table event;
 
-drop table if exists event_user;
+drop table event_user;
 
-drop table if exists user;
+drop table user;
 
-SET REFERENTIAL_INTEGRITY TRUE;
-
-drop sequence if exists access_token_seq;
-
-drop sequence if exists event_seq;
-
-drop sequence if exists user_seq;
+SET FOREIGN_KEY_CHECKS=1;
 

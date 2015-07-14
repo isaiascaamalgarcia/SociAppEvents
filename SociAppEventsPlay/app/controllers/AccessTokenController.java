@@ -28,6 +28,7 @@ public class AccessTokenController extends Controller {
         String token = UUID.randomUUID().toString();
         accessToken.setToken(token);
         accessToken.setUser(user);
+        accessToken.setIdUser(user.getId());
         accessToken.save();
         return created(Json.toJson(accessToken));
     }

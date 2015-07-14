@@ -27,7 +27,7 @@ $x.click(function(evt) {
                 success : function(data) {
                     location.href= 'dashboard.html';
                     localStorage.setItem('token',data.token);
-                    localStorage.setItem('user_id',data.user.id);
+                    localStorage.setItem('idUser',data.idUsers);
                     console.log(data);
 
                 },

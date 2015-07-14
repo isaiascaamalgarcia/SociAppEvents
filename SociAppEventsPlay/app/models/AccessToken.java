@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,8 +15,18 @@ public class AccessToken extends Model {
     @Id
     private Integer id;
     private String token;
+    @JsonIgnore
     @ManyToOne
     private User user;
+    private Integer idUser;
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
 
     public static Finder<Integer, AccessToken> find =
             new Finder(AccessToken.class);
