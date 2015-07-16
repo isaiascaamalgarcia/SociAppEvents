@@ -50,7 +50,7 @@ public class MainActivity extends RoboActivity {
                     Credentials credentials = new Credentials();
                     credentials.setEmail(email);
                     credentials.setPassword(password);
-                    RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.0.5:9000").build();
+                    RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.137.126:9000").build();
                     AccessTokenService service = adapter.create(AccessTokenService.class);
                     service.createAccessToken(credentials, new Callback<AccesToken>() {
                         @Override

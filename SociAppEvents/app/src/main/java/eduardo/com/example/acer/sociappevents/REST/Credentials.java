@@ -20,6 +20,12 @@ public class Credentials {
         this.password = password;
     }
 
+    public String getToken() {return token;}
+
+    public void setToken(String token) {this.token = token;}
+
     private String email;
     private String password;
+    private String token;
+
 }
