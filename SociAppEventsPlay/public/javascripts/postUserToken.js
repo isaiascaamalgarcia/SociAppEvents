@@ -4,6 +4,11 @@ function showForm() {
     document.getElementById("events").style.display = "block";
 
 }
+
+function showForm2() {
+    document.getElementById("listadoEvents").style.display = "block";
+
+}
 function hiddenForm() {
     document.getElementById("events").style.display = "none";
 }
