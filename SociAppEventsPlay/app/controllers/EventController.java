@@ -14,9 +14,6 @@ import java.util.List;
  * Created by Shary on 09/07/2015.
  */
 public class EventController extends Controller {
-   public Result createEvent(Integer id) {
-        return ok();
-    }
  /*
     public Result getUserEvent(Integer id) {
         User user = User.find.byId(id);

@@ -16,10 +16,7 @@ $x.click(function(evt) {
                  }
             }
          }
-                /*var name=document.getElementById("name").placeholder = "Nombre completo";
-                var email=document.getElementById("email").placeholder = "E-mail";
-                var pass_1=document.getElementById("password").placeholder = "Contraseña";
-                var pass_2=document.getElementById("password2").placeholder = "Repetir contraseña";*/
+
     console.log(myObj);
 
 
@@ -30,7 +27,6 @@ $x.click(function(evt) {
             dataType: 'JSON',
             data: JSON.stringify(myObj),
             success : function(data) {
-            location.href= 'dashboard.html';
             console.log(data);
             },
             error : function() {

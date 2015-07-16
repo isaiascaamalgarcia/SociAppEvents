@@ -17,7 +17,7 @@ PUT        /users/:id             controllers.UserController.updateUser(id:Integ
 POST       /accessTokens          controllers.AccessTokenController.createAccessToken()
 
 
-POST       /users/:id/my-events               controllers.EventController.createEvent(id:Integer)
+POST       /users/:id/my-events               controllers.EventController.addEvent(id:Integer)
 GET        /users/:id/events                  controllers.EventController.getUserEvents(id:Integer)
-#POST      /users/:id/my-events/:id/guests    controllers.EventController.inviteUser(id1:Integer,id2:Integer)
+#POST      /users/:id/my-events/:id/guests    controllers.EventController.inviteGuest(userId:Integer,eventId:Integer)
 

@@ -9,6 +9,7 @@
     <title>SocciApp events</title>
     <script src="javascripts/postUserToken.js"></script>
 
+
 </head>
 <body onload="dashLoad()">
 <di id="mostrar-nav"></di>
@@ -24,23 +25,25 @@
 <div class="event" id="events">
     <div class="form--field">
         <label class="fontawesome-calendar"></label>
-        <input type="text" placeholder="Nombre del evento">
+        <input id="nameEvent" type="text" placeholder="Nombre del evento">
     </div>
     <div class="form--field">
         <label class="fontawesome-calendar"></label>
-        <input type="text" placeholder="Fecha del evento">
+        <input id="dateEvent" type="text" placeholder="Fecha del evento">
     </div>
     <div class="form--field">
         <label class="fontawesome-pencil"></label>
         <textarea name="description" id="desc" cols="30" rows="10" placeholder="Descripcion del evento"></textarea>
     </div>
     <div class="form--field">
-        <input type="submit" value="Guardar">
+        <button id="saveEvents">Guardar</button>
+        <br>
         <button onclick="hiddenForm()">Cancelar</button>
     </div>
 
 </div>
 <script src="javascripts/mostrar-nav.js"></script>
+<script src="javascripts/postEvent.js"></script>
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/clear.js"></script>
 </body>
