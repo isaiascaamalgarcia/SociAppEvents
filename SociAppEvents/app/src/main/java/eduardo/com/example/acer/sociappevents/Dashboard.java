@@ -13,10 +13,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import eduardo.com.example.acer.sociappevents.Rest.AccessTokenService;
 import eduardo.com.example.acer.sociappevents.Rest.Credentials;
 import eduardo.com.example.acer.sociappevents.Rest.EventsData;
+import eduardo.com.example.acer.sociappevents.Rest.EventsService;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -31,9 +33,11 @@ public class Dashboard extends RoboActivity {
     @InjectView(R.id.botonsalir)
     private Button logout;
     private String getPreferencia;
+    private int getuserId;
     private ArrayList<EventsData> listaEventos = new ArrayList<>();
     private AdapterDashboard adapterDashboard;
     private RecyclerView listEvents;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,30 +49,24 @@ public class Dashboard extends RoboActivity {
 
         SharedPreferences miPreferencia = getSharedPreferences("preferenceToken",Context.MODE_PRIVATE);
         getPreferencia = miPreferencia.getString("token","");
-        Toast.makeText(Dashboard.this, "token obtenido" + getPreferencia, Toast.LENGTH_LONG).show();
-        Credentials credentials = new Credentials();
-        credentials.setToken(getPreferencia);
-        RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.137.126:9000").build();
 
-        AccessTokenService service = adapter.create(AccessTokenService.class);
-/**
-        EventsData datos = new EventsData();
-        datos.setNombre("Cumpleaños de Denisse");
-        datos.setFecha("15/10/15");
-        datos.setNum_invitados(15);
-        datos.setNum_fotos(20);
-        datos.setTipo_invitado("Invitado");
-        listEvents.setAdapter(adapterDashboard);
-        adapterDashboard.setListaEventos(listaEventos);
-**/
-        service.getData(credentials, new Callback<EventsData>() {
+        SharedPreferences userid = getSharedPreferences("preferenceUserId",Context.MODE_PRIVATE);
+        getuserId = userid.getInt("userid",0);
+
+        Toast.makeText(Dashboard.this, "token obtenido" + getPreferencia, Toast.LENGTH_LONG).show();
+
+        RestAdapter.Builder builder = new RestAdapter.Builder();
+        builder.setEndpoint("http://192.168.0.1:9000");
+        RestAdapter restAdapter = builder.build();
+
+        EventsService service = restAdapter.create(EventsService.class);
+
+        service.getUserEvents(getuserId, getPreferencia, new Callback<List<EventsData>>() {
             @Override
-            public void success(EventsData eventsData, Response response) {
-                eventsData.getNombre();
-                eventsData.getFecha();
-                eventsData.getNum_fotos();
-                eventsData.getNum_invitados();
-                eventsData.getTipo_invitado();
+            public void success(List<EventsData> eventsDatas, Response response) {
+
+
+
             }
 
             @Override

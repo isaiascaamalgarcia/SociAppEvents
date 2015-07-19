@@ -35,7 +35,9 @@ public class MainActivity extends RoboActivity {
     private Toolbar toolbar;
     private String getPreferencia;
     private String tokenObtenido;
-
+    private int idObtenido;
+    private  String email;
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,18 +47,24 @@ public class MainActivity extends RoboActivity {
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String email = usuario.getText().toString();
-                    final String password = contrasenia.getText().toString();
+
+                    email = usuario.getText().toString();
+                    password = contrasenia.getText().toString();
+
                     Credentials credentials = new Credentials();
                     credentials.setEmail(email);
                     credentials.setPassword(password);
+
                     RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.137.126:9000").build();
                     AccessTokenService service = adapter.create(AccessTokenService.class);
                     service.createAccessToken(credentials, new Callback<AccesToken>() {
+
                         @Override
                         public void success(AccesToken accesToken, Response response) {
+
                             tokenObtenido = accesToken.getToken();
-                            guardarPreferencias(tokenObtenido);
+                            idObtenido = accesToken.getId();
+                            guardarPreferencias(tokenObtenido,idObtenido);
                             Toast.makeText(MainActivity.this, "acceso correcto" + accesToken.getToken(), Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), Dashboard.class));
 
@@ -84,11 +92,19 @@ public class MainActivity extends RoboActivity {
         }catch(Exception e){}
     }
 
-    public void guardarPreferencias(String token){
+    public void guardarPreferencias(String token, int userId){
+
         SharedPreferences miPreferencia = getSharedPreferences("preferenceToken", Context.MODE_PRIVATE);
+        SharedPreferences UserId = getSharedPreferences("userId", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor2 = UserId.edit();
         SharedPreferences.Editor editor = miPreferencia.edit();
+
         editor.putString("token",token);
+        editor2.putInt("UserId",userId);
+
         editor.commit();
+        editor2.commit();
 
 
     }

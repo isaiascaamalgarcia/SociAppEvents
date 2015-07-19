@@ -5,6 +5,9 @@ package eduardo.com.example.acer.sociappevents.Rest;
  */
 public class AccesToken {
 
+    private String token;
+    private int id;
+
     public String getToken() {
         return token;
     }
@@ -13,7 +16,10 @@ public class AccesToken {
         this.token = token;
     }
 
-    private String token;
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
+
 
 
 

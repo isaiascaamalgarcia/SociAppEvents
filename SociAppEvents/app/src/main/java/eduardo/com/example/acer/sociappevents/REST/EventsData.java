@@ -5,50 +5,59 @@ package eduardo.com.example.acer.sociappevents.Rest;
  */
 public class EventsData {
 
-    private String nombre;
-    private String fecha;
-    private int num_invitados;
-    private int num_fotos;
-    private String tipo_invitado;
+    private String name;
+    private String day;
+    private int id;
+    private String description;
 
     public EventsData() {
 
     }
 
-    public EventsData(String nombre, String fecha, int numero_invitados, int numero_fotos,String tipo_invitado){
-        this.nombre = nombre;
-        this.fecha = fecha;
-        this.num_invitados = numero_invitados;
-        this.num_fotos = numero_fotos;
-        this.tipo_invitado = tipo_invitado;
+    public EventsData(String name, String day, int id, String description){
+        this.name = name;
+        this.day = day;
+        this.id = id;
+        this.description = description;
     }
 
-    public String getNombre() {return nombre;}
+    public String getName() {
+        return name;
+    }
 
-    public void setNombre(String nombre) {this.nombre = nombre;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public String getFecha() {return fecha;}
+    public String getDay() {
+        return day;
+    }
 
-    public void setFecha(String fecha) {this.fecha = fecha;}
+    public void setDay(String day) {
+        this.day = day;
+    }
 
-    public int getNum_invitados() {return num_invitados;}
+    public int getId() {
+        return id;
+    }
 
-    public void setNum_invitados(int num_invitados) {this.num_invitados = num_invitados;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public int getNum_fotos() {return num_fotos;}
+    public String getDescription() {
+        return description;
+    }
 
-    public void setNum_fotos(int num_fotos) {this.num_fotos = num_fotos;}
-
-    public String getTipo_invitado() {return tipo_invitado;}
-
-    public void setTipo_invitado(String tipo_invitado) {this.tipo_invitado = tipo_invitado;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public String toString(){
-        return "nombre"+nombre+
-                "fecha"+fecha+
-                "num_invitados"+num_invitados+
-                "num_fotos"+num_fotos+
-                "tipo_invitado"+tipo_invitado;
+        return "name"+name+
+                "day"+day+
+                "id"+id+
+                "description"+description;
     }
 }
