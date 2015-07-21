@@ -1,5 +1,7 @@
 package eduardo.com.example.acer.sociappevents.Rest;
 
+import java.util.Date;
+
 /**
  * Created by ACER on 12/07/2015.
  */
@@ -14,7 +16,7 @@ public class EventsData {
 
     }
 
-    public EventsData(String name, String day, int id, String description){
+    public EventsData(String name, String day, int id, String description) {
         this.name = name;
         this.day = day;
         this.id = id;
@@ -54,10 +56,10 @@ public class EventsData {
     }
 
     @Override
-    public String toString(){
-        return "name"+name+
-                "day"+day+
-                "id"+id+
-                "description"+description;
+    public String toString() {
+        return "name" + name +
+                "day" + day +
+                "id" + id +
+                "description" + description;
     }
 }

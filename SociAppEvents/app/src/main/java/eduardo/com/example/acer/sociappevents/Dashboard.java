@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import eduardo.com.example.acer.sociappevents.Rest.AccessTokenService;
@@ -36,7 +37,7 @@ public class Dashboard extends RoboActivity {
 
     @InjectView(R.id.botonsalir)
     private Button logout;
-    private static final String TAG="Dashboard";
+    private static final String TAG = "Dashboard";
     private String getPreferencia;
     private int getuserId;
     private String descripcionobtenida;
@@ -45,32 +46,33 @@ public class Dashboard extends RoboActivity {
     private ArrayList<EventsData> listaEventos = new ArrayList<>();
     private AdapterDashboard adapterDashboard;
     private RecyclerView listEvents;
-    private int userId=0;
+    private int userId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         adapterDashboard = new AdapterDashboard(getApplication());
-        listEvents = (RecyclerView)findViewById(R.id.listEvents);
+        listEvents = (RecyclerView) findViewById(R.id.listEvents);
         listEvents.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         cargarPreferencias();
+
+        Toast.makeText(Dashboard.this, "Dashboard: " + "Token: " + getPreferencia + "\n Id: " + getuserId, Toast.LENGTH_LONG).show();
 
         RestAdapter.Builder builder = new RestAdapter.Builder();
         builder.setEndpoint("http://192.168.0.5:9000");
         RestAdapter restAdapter = builder.build();
 
         EventsService service = restAdapter.create(EventsService.class);
-        Toast.makeText(Dashboard.this, "Dashboard: "+"Token: " + getPreferencia+"\n Id: "+getuserId, Toast.LENGTH_LONG).show();
+
         service.getUserEvents(getuserId, getPreferencia, new Callback<List<EventsData>>() {
             @Override
             public void success(List<EventsData> eventsData, Response response) {
                 try {
 
-                    Toast.makeText(getApplicationContext(),"Respuesta correcta del servidor "+response.toString(), Toast.LENGTH_LONG).show();
-
-                    for (int i = 0; i<eventsData.size(); i++){
+                    Toast.makeText(getApplicationContext(), "Respuesta correcta del servidor " + response.toString(), Toast.LENGTH_LONG).show();
+                    for (int i = 0; i < eventsData.size(); i++) {
 
                         nombre_evento = eventsData.get(i).getName();
                         descripcionobtenida = eventsData.get(i).getDescription();
@@ -87,8 +89,8 @@ public class Dashboard extends RoboActivity {
                     listEvents.setAdapter(adapterDashboard);
                     adapterDashboard.setListaEventos(listaEventos);
 
-                }catch (Exception e){
-                    Toast.makeText(getApplicationContext(), "Error al capturar los datos: "+ e, Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error al capturar los datos: " + e, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -119,10 +121,10 @@ public class Dashboard extends RoboActivity {
         });
     }
 
-    public void cargarPreferencias(){
+    public void cargarPreferencias() {
 
-        SharedPreferences miPreferencia = getSharedPreferences("preferenceToken",Context.MODE_PRIVATE);
-        getPreferencia = miPreferencia.getString("token","");
+        SharedPreferences miPreferencia = getSharedPreferences("preferenceToken", Context.MODE_PRIVATE);
+        getPreferencia = miPreferencia.getString("token", "");
 
         SharedPreferences miPreferencia2 = getSharedPreferences("preferenceId", Context.MODE_PRIVATE);
         getuserId = miPreferencia2.getInt("UserId", -1);
@@ -130,7 +132,8 @@ public class Dashboard extends RoboActivity {
         try {
             if (getPreferencia.isEmpty())
                 Toast.makeText(Dashboard.this, "NECESITA EL ACCES_TOKEN", Toast.LENGTH_LONG).show();
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
     }
 
     @Override

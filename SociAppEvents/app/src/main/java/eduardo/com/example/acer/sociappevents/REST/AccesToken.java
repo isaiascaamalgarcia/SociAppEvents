@@ -7,7 +7,9 @@ public class AccesToken {
 
     private String token;
 
-    private int id=0;
+    private int id;
+
+    private int idUser;
 
     public String getToken() {
         return token;
@@ -17,8 +19,19 @@ public class AccesToken {
         this.token = token;
     }
 
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 }

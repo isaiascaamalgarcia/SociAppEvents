@@ -61,23 +61,23 @@ public class MainActivity extends RoboActivity {
                     email = usuario.getText().toString();
                     password = contrasenia.getText().toString();
 
-                    Credentials credentials = new Credentials();
+                    final Credentials credentials = new Credentials();
                     credentials.setEmail(email);
                     credentials.setPassword(password);
 
                     RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.0.5:9000").build();
                     AccessTokenService service = adapter.create(AccessTokenService.class);
+
                     service.createAccessToken(credentials, new Callback<AccesToken>() {
 
                         @Override
                         public void success(AccesToken accesToken, Response response) {
 
+
+                            accesToken.getIdUser();
+
                             tokenObtenido = accesToken.getToken();
-                            idObtenido = accesToken.getId();
-                            List<Header> listheaders = response.getHeaders();
-
-                            Toast.makeText(MainActivity.this,"ListHeader: " + listheaders, Toast.LENGTH_LONG).show();
-
+                            idObtenido = accesToken.getIdUser();
 
                             Toast.makeText(MainActivity.this,"MainActivity "+"Token: " + tokenObtenido+"\n Id: "+idObtenido, Toast.LENGTH_LONG).show();
 
@@ -98,6 +98,7 @@ public class MainActivity extends RoboActivity {
     }
 
     public void cargarPreferencias(){
+
         SharedPreferences miPreferencia = getSharedPreferences("preferenceToken",Context.MODE_PRIVATE);
         getPreferencia = miPreferencia.getString("token","");
 
