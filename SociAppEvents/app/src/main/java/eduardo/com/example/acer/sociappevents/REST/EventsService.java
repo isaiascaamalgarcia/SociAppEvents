@@ -14,7 +14,7 @@ import retrofit.http.Path;
  */
 public interface EventsService {
 
-    @GET("/")
+    @GET("/users/{id}/events")
     public void getUserEvents (@Path("id")int id, @Header("ACCESS_TOKEN") String token, Callback<List<EventsData>> cb);
 
 }

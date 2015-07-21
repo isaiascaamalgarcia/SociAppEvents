@@ -6,11 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +36,16 @@ public class Dashboard extends RoboActivity {
 
     @InjectView(R.id.botonsalir)
     private Button logout;
+    private static final String TAG="Dashboard";
     private String getPreferencia;
     private int getuserId;
+    private String descripcionobtenida;
+    private String nombre_evento;
+    private String fechaobtenida;
     private ArrayList<EventsData> listaEventos = new ArrayList<>();
     private AdapterDashboard adapterDashboard;
     private RecyclerView listEvents;
-    private int userId;
+    private int userId=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,31 +55,49 @@ public class Dashboard extends RoboActivity {
         listEvents = (RecyclerView)findViewById(R.id.listEvents);
         listEvents.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        SharedPreferences miPreferencia = getSharedPreferences("preferenceToken",Context.MODE_PRIVATE);
-        getPreferencia = miPreferencia.getString("token","");
-
-        SharedPreferences userid = getSharedPreferences("preferenceUserId",Context.MODE_PRIVATE);
-        getuserId = userid.getInt("userid",0);
-
-        Toast.makeText(Dashboard.this, "token obtenido" + getPreferencia, Toast.LENGTH_LONG).show();
+        cargarPreferencias();
 
         RestAdapter.Builder builder = new RestAdapter.Builder();
-        builder.setEndpoint("http://192.168.0.1:9000");
+        builder.setEndpoint("http://192.168.0.5:9000");
         RestAdapter restAdapter = builder.build();
 
         EventsService service = restAdapter.create(EventsService.class);
-
+        Toast.makeText(Dashboard.this, "Dashboard: "+"Token: " + getPreferencia+"\n Id: "+getuserId, Toast.LENGTH_LONG).show();
         service.getUserEvents(getuserId, getPreferencia, new Callback<List<EventsData>>() {
             @Override
-            public void success(List<EventsData> eventsDatas, Response response) {
+            public void success(List<EventsData> eventsData, Response response) {
+                try {
 
+                    Toast.makeText(getApplicationContext(),"Respuesta correcta del servidor "+response.toString(), Toast.LENGTH_LONG).show();
 
+                    for (int i = 0; i<eventsData.size(); i++){
+
+                        nombre_evento = eventsData.get(i).getName();
+                        descripcionobtenida = eventsData.get(i).getDescription();
+                        fechaobtenida = eventsData.get(i).getDay();
+
+                        EventsData eventsData1 = new EventsData();
+                        eventsData1.setName(nombre_evento);
+                        eventsData1.setDescription(descripcionobtenida);
+                        eventsData1.setDay(fechaobtenida);
+                        listaEventos.add(eventsData1);
+
+                    }
+
+                    listEvents.setAdapter(adapterDashboard);
+                    adapterDashboard.setListaEventos(listaEventos);
+
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Error al capturar los datos: "+ e, Toast.LENGTH_LONG).show();
+                }
 
             }
 
+
             @Override
             public void failure(RetrofitError error) {
-
+                Log.e(TAG, error.getMessage());
+                Toast.makeText(getApplicationContext(), "Fatal error: " + error, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -79,11 +105,32 @@ public class Dashboard extends RoboActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 SharedPreferences preferencia = getSharedPreferences("preferenceToken", Context.MODE_PRIVATE);
                 preferencia.edit().clear().commit();
+
+                SharedPreferences preferencia2 = getSharedPreferences("preferenceId", Context.MODE_PRIVATE);
+                preferencia2.edit().clear().commit();
+
+                finish();
+
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
+    }
+
+    public void cargarPreferencias(){
+
+        SharedPreferences miPreferencia = getSharedPreferences("preferenceToken",Context.MODE_PRIVATE);
+        getPreferencia = miPreferencia.getString("token","");
+
+        SharedPreferences miPreferencia2 = getSharedPreferences("preferenceId", Context.MODE_PRIVATE);
+        getuserId = miPreferencia2.getInt("UserId", -1);
+
+        try {
+            if (getPreferencia.isEmpty())
+                Toast.makeText(Dashboard.this, "NECESITA EL ACCES_TOKEN", Toast.LENGTH_LONG).show();
+        }catch(Exception e){}
     }
 
     @Override

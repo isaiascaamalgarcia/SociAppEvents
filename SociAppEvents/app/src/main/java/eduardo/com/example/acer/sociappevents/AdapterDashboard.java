@@ -40,11 +40,10 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
     @Override
     public void onBindViewHolder(viewHolderMainActivity holder, int position) {
         EventsData currentEvent = listaEventos.get(position);
-        holder.nameEvent.setText(currentEvent.getNombre());
-        holder.dateEvent.setText(currentEvent.getFecha());
-        holder.num_invitados.setText(currentEvent.getNum_invitados());
-        holder.num_fotos.setText(currentEvent.getNum_fotos());
-        holder.tipo_invitado.setText(currentEvent.getTipo_invitado());
+        holder.nameEvent.setText(currentEvent.getName());
+        holder.dateEvent.setText(currentEvent.getDay());
+        holder.num_invitados.setText(currentEvent.getDescription());
+
 
     }
 
@@ -58,8 +57,8 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
         private TextView nameEvent;
         private TextView dateEvent;
         private TextView num_invitados;
-        private TextView num_fotos;
-        private TextView tipo_invitado;
+      //  private TextView num_fotos;
+      //  private TextView tipo_invitado;
 
         public viewHolderMainActivity(View itemView) {
             super(itemView);
@@ -67,8 +66,8 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
             nameEvent = (TextView)itemView.findViewById(R.id.nombre_evento);
             dateEvent = (TextView)itemView.findViewById(R.id.fecha_evento);
             num_invitados = (TextView)itemView.findViewById(R.id.num_invitados);
-            num_fotos = (TextView)itemView.findViewById(R.id.num_fotos);
-            tipo_invitado = (TextView)itemView.findViewById(R.id.tipo_invitado);
+           // num_fotos = (TextView)itemView.findViewById(R.id.num_fotos);
+           // tipo_invitado = (TextView)itemView.findViewById(R.id.tipo_invitado);
         }
     }
 }
