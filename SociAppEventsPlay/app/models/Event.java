@@ -18,7 +18,7 @@ public class Event extends Model {
 
 
     @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-DD")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yy")
     private Date day;
 
     private String description;

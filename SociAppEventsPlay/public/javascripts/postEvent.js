@@ -6,11 +6,11 @@ console.log("ENTRO EVENT");
      console.log(aux);
         if (aux)
         {
-        var nombre = document.getElementById('nameEvent').value;
-            var fecha = document.getElementById('dateEvent').value;
+            var nombre = document.getElementById('nameEvent').value;
+            var dayfecha = document.getElementById('dateEvent').value;
             var desc = document.getElementById('desc').value;
 
-            var myObj = {name:nombre, day:fecha, description:desc};
+            var myObj = {name:nombre, day:dayfecha, description:desc};
 
 
             console.log(myObj);
