@@ -3,7 +3,7 @@ var $eventDiv = $('#listadoEvents');
 $.ajax({
     url:'/users/'+localStorage.getItem('idUser')+'/events',
     type:'GET',
-     headers: {ACCESS_TOKEN : localStorage.getItem('token')},
+    headers: {ACCESS_TOKEN : localStorage.getItem('token')},
     success: function(events){
     console.log(events);
 
