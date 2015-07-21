@@ -18,21 +18,22 @@ import eduardo.com.example.acer.sociappevents.Rest.EventsData;
 public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.viewHolderMainActivity> {
     private ArrayList<EventsData> listaEventos = new ArrayList<>();
     private LayoutInflater layoutInflater;
-    public AdapterDashboard(Context context){
+
+    public AdapterDashboard(Context context) {
 
         layoutInflater = LayoutInflater.from(context);
 
     }
 
-    public void setListaEventos(ArrayList<EventsData> listaeventos){
+    public void setListaEventos(ArrayList<EventsData> listaeventos) {
         this.listaEventos = listaeventos;
-        notifyItemRangeChanged(0,listaeventos.size());
+        notifyItemRangeChanged(0, listaeventos.size());
 
     }
 
     @Override
     public viewHolderMainActivity onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.costum_rowdata,parent,false);
+        View view = layoutInflater.inflate(R.layout.costum_rowdata, parent, false);
         viewHolderMainActivity viewHolder = new viewHolderMainActivity(view);
         return viewHolder;
     }
@@ -43,8 +44,6 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
         holder.nameEvent.setText(currentEvent.getName());
         holder.dateEvent.setText(currentEvent.getDay());
         holder.num_invitados.setText(currentEvent.getDescription());
-
-
     }
 
     @Override
@@ -52,22 +51,22 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
         return listaEventos.size();
     }
 
-    static class viewHolderMainActivity extends RecyclerView.ViewHolder{
+    static class viewHolderMainActivity extends RecyclerView.ViewHolder {
 
         private TextView nameEvent;
         private TextView dateEvent;
         private TextView num_invitados;
-      //  private TextView num_fotos;
-      //  private TextView tipo_invitado;
+        //  private TextView num_fotos;
+        //  private TextView tipo_invitado;
 
         public viewHolderMainActivity(View itemView) {
             super(itemView);
 
-            nameEvent = (TextView)itemView.findViewById(R.id.nombre_evento);
-            dateEvent = (TextView)itemView.findViewById(R.id.fecha_evento);
-            num_invitados = (TextView)itemView.findViewById(R.id.num_invitados);
-           // num_fotos = (TextView)itemView.findViewById(R.id.num_fotos);
-           // tipo_invitado = (TextView)itemView.findViewById(R.id.tipo_invitado);
+            nameEvent = (TextView) itemView.findViewById(R.id.nombre_evento);
+            dateEvent = (TextView) itemView.findViewById(R.id.fecha_evento);
+            num_invitados = (TextView) itemView.findViewById(R.id.num_invitados);
+            // num_fotos = (TextView)itemView.findViewById(R.id.num_fotos);
+            // tipo_invitado = (TextView)itemView.findViewById(R.id.tipo_invitado);
         }
     }
 }
