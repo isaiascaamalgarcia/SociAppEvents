@@ -3,8 +3,6 @@ package models;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import play.data.format.Formats;
-
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,7 +16,7 @@ public class Event extends Model {
 
 
     @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date day;
 
     private String description;

@@ -9,39 +9,7 @@
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <title>SocciApp events</title>
     <script src="javascripts/postUserToken.js"></script>
-    <script>
-    console.log(photoFile);
 
-    var reader = new FileReader();
-    reader.onload = function(){
-      var dataURL = reader.result;
-      var output = document.getElementById('imgTest');
-        function encodeImage(){
-var d = new Date();
-document.getElementById("fecha").value = d.toDateString();
-    var input = event.target;
-    var photoFile = input.files[0];
-      output.src = dataURL;
-            var extImg="";
-            var indice=0;
-            for (i = 0; i < dataURL.length; i++) {
-                if(i>=11){
-                    if(dataURL.charAt(i) != ';'){
-                        extImg+= dataURL.charAt(i);
-                    }
-                    else{
-                        indice = i;
-                        break;
-                    }
-                }
-            }
-            var stringBase64 = dataURL.substring(indice+8);
-            console.log("La extension es: "+extImg+" la cadena base64 es "+stringBase64);
-    };
-    reader.readAsDataURL(input.files[0]);
-};
-
-    </script>
     <style>
         div.upload {
         width: 157px;
@@ -68,6 +36,7 @@ document.getElementById("fecha").value = d.toDateString();
         }
 
         table {
+<<<<<<< HEAD
         color: #333;
         font-family: Helvetica, Arial, sans-serif;
         width: 640px;
@@ -80,6 +49,10 @@ document.getElementById("fecha").value = d.toDateString();
         border: 1px solid transparent;
         height: 30px;
         transition: all 0.3s;
+=======
+        width: 100%;
+        margin-top: 2em;
+>>>>>>> origin/master
         }
 
         th {
@@ -120,9 +93,8 @@ document.getElementById("fecha").value = d.toDateString();
 <div class="event menuAux" id="listadoEvents">
 </div>
 
-<script src="javascripts/mostrar-nav.js"></script>
-<script src="javascripts/postEvent.js"></script>
 <script src="javascripts/listEvents.js"></script>
+<script src="javascripts/mostrar-nav.js"></script>
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/clear.js"></script>
 </body>

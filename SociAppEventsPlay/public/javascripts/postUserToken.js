@@ -9,6 +9,11 @@ function showForm2() {
     document.getElementById("listadoEvents").style.display = "block";
 
 }
+
+function showForm3() {
+    document.getElementById("img").style.display = "block";
+
+}
 function hiddenForm() {
     document.getElementById("events").style.display = "none";
 }
