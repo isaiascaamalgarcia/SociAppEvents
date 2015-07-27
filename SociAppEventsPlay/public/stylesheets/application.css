@@ -62,11 +62,12 @@ h1 {
   line-height: 1; 
   color: #5D4037;
 }
-input[type="password"], .form input[type="text"], .form input[type="submit"], input[type="email"] {
+input[type="password"], .form input[type="text"],.form input[type="date"], .form input[type="submit"], input[type="email"] {
   width: 100%;
 }
 label,
 input[type="text"],
+input[type="date"],
 input[type="password"],
 input[type="submit"],
 input[type="email"] {
@@ -84,6 +85,7 @@ label {
 	width: 3.5em;
 }
 input[type="text"],
+input[type="date"],
 input[type="password"],
 input[type="email"] {
 	background-color: #FFFCAA;
@@ -107,6 +109,7 @@ a{
 
 }
 input[type="text"]:focus,
+input[type="date"],
 input[type="text"]:hover{
 	background: #FFFCAA;
 }

@@ -49,7 +49,7 @@ body {
 nav {
 	background: rgba(84,69,51,.8);
 	box-sizing: border-box;
-	left: -18em;
+	left: 0em;
 	height: 100%;
 	padding-right: .25em;
 	padding-top: 3em;
