@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-
+    <title></title>
     <link rel="stylesheet" type="text/css" href="stylesheets/menu2.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/application.css">
@@ -22,13 +22,6 @@ document.getElementById("fecha").value = d.toDateString();
     var input = event.target;
     var photoFile = input.files[0];
       output.src = dataURL;
-      var canvas = document.createElement('canvas');
-      canvas.width = 100;
-      canvas.height = 100;
-        var img = new Image();
-        img.src = dataURL;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, 100, 100);
             var extImg="";
             var indice=0;
             for (i = 0; i < dataURL.length; i++) {
@@ -42,10 +35,8 @@ document.getElementById("fecha").value = d.toDateString();
                     }
                 }
             }
-    var finalFile = canvas.toDataURL("image/"+extImg);
             var stringBase64 = dataURL.substring(indice+8);
-            console.log("La extension es: "+extImg+" la cadena base64 de la img grande es "+stringBase64);
-            console.log("La extension es: "+extImg+" la cadena base64 de la img pequeña es "+finalFile.replace("data:image/"+extImg+";base64,", ""));
+            console.log("La extension es: "+extImg+" la cadena base64 es "+stringBase64);
     };
     reader.readAsDataURL(input.files[0]);
 };
@@ -75,23 +66,10 @@ document.getElementById("fecha").value = d.toDateString();
         margin-left:15em;
         margin-top: 2em;
         }
-        table {
-            width: 100%;
-            margin-top: 2em;
-        }
-        th {
-        height: 50px;
-        }
-        tr {
-        background-color: brown;
-        color: white;
-        }
 
     </style>
-
-
 </head>
-<body onload="dashLoad(); showForm2()">
+<body onload="dashLoad()">
 <di id="mostrar-nav"></di>
 <nav>
     <ul class="menu">
@@ -103,14 +81,34 @@ document.getElementById("fecha").value = d.toDateString();
 
     </ul>
 </nav>
+<div class="image">
+    <div class="form__field">
+        <label for="" class="fix">Titulo</label>
+        <input type="text" class="form__input">
+    </div>
+    <div class="form__field">
+        <label for="" class="fix">Description</label>
+        <input type="text" class="form__input">
+    </div>
+    <div class="form__field">
+        <label for="" class="fix">Fecha</label>
+        <input id="fecha" type="date" class="form__input">
+    </div>
+    <img id="imgTest">
 
-<div class="event menuAux" id="listadoEvents">
+    <div class="upload">
+        <input id="imageFile" type="file" name="upload" onchange="encodeImage();"/>
+    </div>
+    <div class="form__field">
+        <button id="save" type="button" class="myButton">Listo</button>
+        <button type="button" class="myButton" onclick="hiddenForm2()">Cancelar</button>
+    </div>
 </div>
 
+</body>
 <script src="javascripts/mostrar-nav.js"></script>
 <script src="javascripts/postEvent.js"></script>
 <script src="javascripts/listEvents.js"></script>
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/clear.js"></script>
-</body>
 </html>

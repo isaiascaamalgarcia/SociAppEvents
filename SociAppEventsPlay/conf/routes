@@ -20,4 +20,5 @@ POST       /accessTokens          controllers.AccessTokenController.createAccess
 POST       /users/:id/my-events               controllers.EventController.addEvent(id:Integer)
 GET        /users/:id/events                  controllers.EventController.getUserEvents(id:Integer)
 #POST      /users/:id/my-events/:id/guests    controllers.EventController.inviteGuest(userId:Integer,eventId:Integer)
-
+#POST      /users/:userId/events/:eventId/photos
+#GET       /users/:userId/events/:eventId/photos
