@@ -20,6 +20,17 @@ create table event (
   constraint pk_event primary key (id))
 ;
 
+create table photo (
+  id                        integer not null,
+  title                     varchar(255),
+  description               varchar(255),
+  base64                    varchar(255),
+  type                      varchar(255),
+  date_photo                timestamp,
+  user_id                   integer,
+  constraint pk_photo primary key (id))
+;
+
 create table user (
   id                        integer not null,
   name                      varchar(255),
@@ -38,12 +49,16 @@ create sequence access_token_seq;
 
 create sequence event_seq;
 
+create sequence photo_seq;
+
 create sequence user_seq;
 
 alter table access_token add constraint fk_access_token_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;
 create index ix_access_token_user_1 on access_token (user_id);
 alter table event add constraint fk_event_host_2 foreign key (host_id) references user (id) on delete restrict on update restrict;
 create index ix_event_host_2 on event (host_id);
+alter table photo add constraint fk_photo_user_3 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_photo_user_3 on photo (user_id);
 
 
 
@@ -61,6 +76,8 @@ drop table if exists event;
 
 drop table if exists event_user;
 
+drop table if exists photo;
+
 drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
@@ -68,6 +85,8 @@ SET REFERENTIAL_INTEGRITY TRUE;
 drop sequence if exists access_token_seq;
 
 drop sequence if exists event_seq;
+
+drop sequence if exists photo_seq;
 
 drop sequence if exists user_seq;
 
