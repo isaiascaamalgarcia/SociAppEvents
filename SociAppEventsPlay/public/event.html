@@ -26,14 +26,14 @@
 
     </ul>
 </nav>
-<form class="event" id="events">
+<div class="event" id="events">
     <div class="form__field">
         <label class="fontawesome-calendar"></label>
         <input id="nameEvent" type="text" placeholder="Nombre del evento">
     </div>
     <div class="form__field">
         <label class="fontawesome-calendar"></label>
-        <input id="dateEvent" type="text" placeholder="Fecha del evento">
+        <input id="dateEvent" type="date" placeholder="Fecha del evento">
     </div>
     <div class="form__field">
         <label class="fontawesome-pencil"></label>
@@ -44,11 +44,10 @@
         <br>
         <button>Cancelar</button>
     </div>
-</form>
+</div>
 </body>
 <script src="javascripts/mostrar-nav.js"></script>
 <script src="javascripts/postEvent.js"></script>
-<script src="javascripts/listEvents.js"></script>
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/clear.js"></script>
 </html>

@@ -10,7 +10,6 @@
     <title>SocciApp events</title>
     <script src="javascripts/postUserToken.js"></script>
     <script>
-    console.log(photoFile);
 
     var reader = new FileReader();
     reader.onload = function(){
@@ -50,6 +49,7 @@ document.getElementById("fecha").value = d.toDateString();
     reader.readAsDataURL(input.files[0]);
 };
 
+
     </script>
     <style>
         div.upload {
@@ -76,8 +76,8 @@ document.getElementById("fecha").value = d.toDateString();
         margin-top: 2em;
         }
         table {
-            width: 100%;
-            margin-top: 2em;
+        width: 100%;
+        margin-top: 2em;
         }
         th {
         height: 50px;
@@ -107,9 +107,8 @@ document.getElementById("fecha").value = d.toDateString();
 <div class="event menuAux" id="listadoEvents">
 </div>
 
-<script src="javascripts/mostrar-nav.js"></script>
-<script src="javascripts/postEvent.js"></script>
 <script src="javascripts/listEvents.js"></script>
+<script src="javascripts/mostrar-nav.js"></script>
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/clear.js"></script>
 </body>

@@ -6,12 +6,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/menu2.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/application.css">
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <title>SocciApp events</title>
     <script src="javascripts/postUserToken.js"></script>
     <script>
-    console.log(photoFile);
-
     var reader = new FileReader();
     reader.onload = function(){
       var dataURL = reader.result;
@@ -40,6 +37,9 @@ document.getElementById("fecha").value = d.toDateString();
     };
     reader.readAsDataURL(input.files[0]);
 };
+
+
+
 
     </script>
     <style>
@@ -100,15 +100,14 @@ document.getElementById("fecha").value = d.toDateString();
         <input id="imageFile" type="file" name="upload" onchange="encodeImage();"/>
     </div>
     <div class="form__field">
-        <button id="save" type="button" class="myButton">Listo</button>
+        <button id="saveImagen" type="button" class="myButton">Listo</button>
         <button type="button" class="myButton" onclick="hiddenForm2()">Cancelar</button>
     </div>
 </div>
 
 </body>
 <script src="javascripts/mostrar-nav.js"></script>
-<script src="javascripts/postEvent.js"></script>
-<script src="javascripts/listEvents.js"></script>
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/clear.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 </html>

@@ -1,4 +1,5 @@
 var $saveEvents = $('#saveEvents');
+console.log("POST EVENT");
 
 $saveEvents.click(function(evt) {
 console.log("ENTRO EVENT");
@@ -29,7 +30,7 @@ console.log("ENTRO EVENT");
                     console.log("An error ocurred");
                     }
             });
-             location.reload();
+             //location.reload();
         }
 });
 

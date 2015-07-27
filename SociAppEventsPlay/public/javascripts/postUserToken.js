@@ -1,4 +1,4 @@
-var $x = $('#save');
+var x = $('#save');
 
 function showForm() {
     document.getElementById("events").style.display = "block";
@@ -13,7 +13,7 @@ function hiddenForm() {
     document.getElementById("events").style.display = "none";
 }
 
-$x.click(function(evt) {
+x.click(function(evt) {
     var formPost = document.getElementById('loginForm');
             var myObj = {};
                 for(var i = 0; i < formPost.length; i++){
