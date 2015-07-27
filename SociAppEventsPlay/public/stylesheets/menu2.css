@@ -71,7 +71,7 @@ nav.mostrar {
 	left: 5em;
 	height: 90px;
 	position: absolute;
-	top: 1em;
+	top: 0em;
 	width: 90px;
 	z-index: 30;
 }
