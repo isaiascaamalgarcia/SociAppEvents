@@ -8,7 +8,7 @@ $.ajax({
     console.log(events);
 
     var html='';
-    html+='<table border=1px>';
+    html+='<table>';
 
      html += '<tr>';
             html += '<td><h3>NOMBRE DE EVENTO</h3></td>';
@@ -21,6 +21,7 @@ $.ajax({
         html += '<td>' + events[i].name + '</td>';
         html += '</tr>';
     }
+    html += '<tr><td>Prueba</td><td>Fecha</td></tr>';
     html += '</table>';
 
     $eventDiv.html(html);
