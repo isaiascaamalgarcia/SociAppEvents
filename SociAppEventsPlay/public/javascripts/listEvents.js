@@ -17,7 +17,7 @@ $.ajax({
 
     for(var i = 0; i<events.length; i++){
     var trid='rec-'+events[i].id;
-        html += '<tr id="'+ trid+'">';
+        html += '<tr id="'+ trid+'" onClick="inviteToEvent('+trid.replace("rec-","")+');">';
         html += '<td>' + events[i].name + '</td>';
         html += '</tr>';
     }
@@ -31,3 +31,13 @@ $.ajax({
         console.log("An error ocurred");
     }
 });
+
+function inviteToEvent(idEvent){
+
+    var tokenStorageValue = localStorage.getItem('token');
+    console.log("verificando token");
+            if(tokenStorageValue) {
+                location.href="listUser.html?idEvent="+idEvent;
+            }
+
+}
