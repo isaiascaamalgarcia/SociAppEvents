@@ -45,8 +45,11 @@ function inviteUser(email){
     console.log(email);
     console.log(idEvent);
     myObj = {};
-    myObj["email"] = email;
-    console.log(JSON.stringify(myObj));
+    myObj["name"] = "";
+    myObj["email"] = email.replace(" ","");
+    myObj["id"] = "";
+    myObj["password"] = "";
+    console.log(myObj);
     $.ajax({
         url:'/users/'+localStorage.getItem('idUser')+'/my-events/'+idEvent+'/guests',
         type:'POST',
@@ -58,7 +61,7 @@ function inviteUser(email){
         console.log(data);
       },
         error:function(){
-            console.log("An error ocurred");
+            //console.log("An error ocurred");
         }
     });
 }

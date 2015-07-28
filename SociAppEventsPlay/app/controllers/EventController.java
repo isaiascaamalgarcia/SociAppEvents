@@ -95,21 +95,24 @@ public class EventController extends Controller {
             return forbidden("You don't have permission to invite users to this event.");
         }
 
-        String guestEmail = Json.fromJson(request().body().asJson(), String.class);
+        User guestEmail = Json.fromJson(request().body().asJson(), User.class);
 
         User guest = User.find.where()
-                .eq("email", guestEmail)
+                .eq("email", guestEmail.getEmail())
                 .findUnique();
-
+        System.out.print(guestEmail.getEmail());
+        System.out.print(guest);
         if (guest == null) {
-            notFound("User doesn't exist.");
+            return notFound("User doesn't exist.");
         }
 
         List<User> guests = event.getGuests();
 
-        for (User u : guests) {
-            if (u.getId() == guest.getId()) {
-                return badRequest("User " + guest.getId() + " already is a guest of event " + event.getId());
+        if(guests.size() > 0) {
+            for (User u : guests) {
+                if (u.getId() == guest.getId()) {
+                    return badRequest("User " + guest.getId() + " already is a guest of event " + event.getId());
+                }
             }
         }
 
