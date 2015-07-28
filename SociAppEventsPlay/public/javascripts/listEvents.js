@@ -12,7 +12,6 @@ $.ajax({
 
      html += '<tr>';
             html += '<td><h3>NOMBRE DE EVENTO</h3></td>';
-            html += '<td><h3>FECHA DE EVENTO</h3></td>';
             html += '</tr>';
 
     for(var i = 0; i<events.length; i++){
@@ -21,7 +20,6 @@ $.ajax({
         html += '<td>' + events[i].name + '</td>';
         html += '</tr>';
     }
-    html += '<tr><td>Prueba</td><td>Fecha</td></tr>';
     html += '</table>';
 
     $eventDiv.html(html);

@@ -30,7 +30,7 @@ console.log("ENTRO EVENT");
                     console.log("An error ocurred");
                     }
             });
-             //location.reload();
+             location.reload();
         }
 });
 

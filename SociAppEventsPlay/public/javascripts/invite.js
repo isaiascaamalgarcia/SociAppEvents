@@ -59,6 +59,7 @@ function inviteUser(email){
         data: JSON.stringify(myObj),
         success: function(data){
         console.log(data);
+         console.log("USUARIO INVITADO");
       },
         error:function(){
             //console.log("An error ocurred");
