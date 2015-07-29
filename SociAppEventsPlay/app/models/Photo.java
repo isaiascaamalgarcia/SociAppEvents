@@ -16,10 +16,11 @@ public class Photo extends Model {
     private Integer id;
     private String title;
     private String description;
+    @Column(columnDefinition = "TEXT")
     private String base64;
     private String type;
     @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date datePhoto;
 
     @JsonIgnore
