@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -80,4 +81,38 @@ public class PhotoController extends Controller {
         return ok(Json.toJson(photo));
     }
 
+    public Result getPhotosEvents(int userId, int eventId){
+        if (!request().hasHeader("ACCESS_TOKEN")) {
+            return badRequest("ACCESS_TOKEN header is required.");
+        }
+
+        String token = request().getHeader("ACCESS_TOKEN");
+
+        AccessToken accessToken = AccessToken.find.where()
+                .eq("token", token)
+                .findUnique();
+
+        if (accessToken == null) {
+            return unauthorized("Invalid access token.");
+        }
+
+        User user = accessToken.getUser();
+
+        if (user.getId() != userId) {
+            return forbidden("You don't have permission to add an event for this user.");
+        }
+
+
+
+        Event event = Event.find.where()
+                .eq("id", eventId)
+                .findUnique();
+        if(event == null){
+            return forbidden("This event doesn't exists.");
+        }
+
+        List<Photo> photosEvent = event.getPhotos();
+
+        return ok(Json.toJson(photosEvent));
+    }
 }

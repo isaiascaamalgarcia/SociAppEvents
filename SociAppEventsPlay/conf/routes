@@ -21,4 +21,4 @@ POST       /users/:id/my-events                              controllers.EventCo
 GET        /users/:id/events                                 controllers.EventController.getUserEvents(id:Integer)
 POST      /users/:userId/my-events/:eventId/guests           controllers.EventController.inviteGuest(userId:Integer,eventId:Integer)
 POST      /users/:userId/events/:eventId/photos              controllers.PhotoController.addPhotoEvent(userId:Integer,eventId:Integer)
-#GET       /users/:userId/events/:eventId/photos
+GET       /users/:userId/events/:eventId/photos              controllers.PhotoController.getPhotosEvent(userId:Integer,eventId:Integer)

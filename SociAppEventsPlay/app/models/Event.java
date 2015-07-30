@@ -29,6 +29,18 @@ public class Event extends Model {
     @ManyToMany
     private List<User> guests;
 
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    @JsonIgnore
+    @OneToMany
+    private List<Photo> photos;
+
     public static Finder<Integer, Event> find =
             new Finder(Event.class);
 
