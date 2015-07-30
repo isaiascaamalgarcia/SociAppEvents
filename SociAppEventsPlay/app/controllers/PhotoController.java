@@ -81,7 +81,7 @@ public class PhotoController extends Controller {
         return ok(Json.toJson(photo));
     }
 
-    public Result getPhotosEvents(int userId, int eventId){
+    public Result getPhotosEvent(int userId, int eventId){
         if (!request().hasHeader("ACCESS_TOKEN")) {
             return badRequest("ACCESS_TOKEN header is required.");
         }
