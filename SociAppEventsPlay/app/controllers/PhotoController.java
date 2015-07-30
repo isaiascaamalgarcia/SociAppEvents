@@ -4,10 +4,17 @@ import models.AccessToken;
 import models.Event;
 import models.Photo;
 import models.User;
+import play.Play;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Base64;
 import java.util.UUID;
 
@@ -56,6 +63,19 @@ public class PhotoController extends Controller {
         String randomName = UUID.randomUUID().toString();
         String extension = photo.getType();
         String filename = randomName + "." + extension;
+        InputStream in = new ByteArrayInputStream(bytes);
+        BufferedImage bImageFromConvert = null;
+        try {
+            bImageFromConvert = ImageIO.read(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File outputFile = new File("public/images/"+filename);
+        try {
+            ImageIO.write(bImageFromConvert,extension,outputFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         photo.save();
         return ok(Json.toJson(photo));
     }
