@@ -52,8 +52,6 @@ public class MainActivity extends RoboActivity {
 
             cargarPreferencias();
 
-
-
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -65,7 +63,7 @@ public class MainActivity extends RoboActivity {
                     credentials.setEmail(email);
                     credentials.setPassword(password);
 
-                    RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.0.5:9000").build();
+                    RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://192.168.0.7:9000").build();
                     AccessTokenService service = adapter.create(AccessTokenService.class);
 
                     service.createAccessToken(credentials, new Callback<AccesToken>() {
@@ -73,13 +71,8 @@ public class MainActivity extends RoboActivity {
                         @Override
                         public void success(AccesToken accesToken, Response response) {
 
-
-                            accesToken.getIdUser();
-
                             tokenObtenido = accesToken.getToken();
                             idObtenido = accesToken.getIdUser();
-
-                            Toast.makeText(MainActivity.this,"MainActivity "+"Token: " + tokenObtenido+"\n Id: "+idObtenido, Toast.LENGTH_LONG).show();
 
                             guardarPreferencias(tokenObtenido, idObtenido);
 

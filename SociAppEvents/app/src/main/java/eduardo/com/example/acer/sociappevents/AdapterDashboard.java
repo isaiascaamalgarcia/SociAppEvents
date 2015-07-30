@@ -15,7 +15,7 @@ import eduardo.com.example.acer.sociappevents.Rest.EventsData;
 /**
  * Created by ACER on 12/07/2015.
  */
-public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.viewHolderMainActivity> {
+public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.viewHolderDashboard> {
     private ArrayList<EventsData> listaEventos = new ArrayList<>();
     private LayoutInflater layoutInflater;
 
@@ -32,14 +32,14 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
     }
 
     @Override
-    public viewHolderMainActivity onCreateViewHolder(ViewGroup parent, int viewType) {
+    public viewHolderDashboard onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.costum_rowdata, parent, false);
-        viewHolderMainActivity viewHolder = new viewHolderMainActivity(view);
+        viewHolderDashboard viewHolder = new viewHolderDashboard(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(viewHolderMainActivity holder, int position) {
+    public void onBindViewHolder(viewHolderDashboard holder, int position) {
         EventsData currentEvent = listaEventos.get(position);
         holder.nameEvent.setText(currentEvent.getName());
         holder.dateEvent.setText(currentEvent.getDay());
@@ -51,7 +51,7 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
         return listaEventos.size();
     }
 
-    static class viewHolderMainActivity extends RecyclerView.ViewHolder {
+    static class viewHolderDashboard extends RecyclerView.ViewHolder {
 
         private TextView nameEvent;
         private TextView dateEvent;
@@ -59,7 +59,7 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.view
         //  private TextView num_fotos;
         //  private TextView tipo_invitado;
 
-        public viewHolderMainActivity(View itemView) {
+        public viewHolderDashboard(View itemView) {
             super(itemView);
 
             nameEvent = (TextView) itemView.findViewById(R.id.nombre_evento);
