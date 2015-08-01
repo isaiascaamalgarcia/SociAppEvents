@@ -31,7 +31,7 @@ public class Event extends Model {
 
 
     @JsonIgnore
-    @ManyToOne
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Photo> photos;
 
     public List<Photo> getPhotos() {

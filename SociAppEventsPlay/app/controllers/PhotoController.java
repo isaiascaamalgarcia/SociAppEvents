@@ -4,7 +4,6 @@ import models.AccessToken;
 import models.Event;
 import models.Photo;
 import models.User;
-import play.Play;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -71,12 +70,14 @@ public class PhotoController extends Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        File outputFile = new File("public/images/"+filename);
+        File outputFile = new File("public/photo/"+filename);
         try {
             ImageIO.write(bImageFromConvert,extension,outputFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String url="/assets/photo/"+filename;
+        photo.setUrl(url);
         photo.save();
         return ok(Json.toJson(photo));
     }
@@ -101,8 +102,6 @@ public class PhotoController extends Controller {
         if (user.getId() != userId) {
             return forbidden("You don't have permission to add an event for this user.");
         }
-
-
 
         Event event = Event.find.where()
                 .eq("id", eventId)

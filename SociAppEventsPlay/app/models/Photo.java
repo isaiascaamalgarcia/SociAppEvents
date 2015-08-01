@@ -22,10 +22,12 @@ public class Photo extends Model {
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date datePhoto;
+    private String url;
 
     @JsonIgnore
     @ManyToOne
     private User user;
+
 
     public User getUser() {
         return user;
@@ -83,5 +85,11 @@ public class Photo extends Model {
         this.datePhoto = datePhoto;
     }
 
+    public String getUrl() {
+        return url;
+    }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
