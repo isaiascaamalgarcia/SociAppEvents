@@ -4,7 +4,6 @@ import models.AccessToken;
 import models.Event;
 import models.Photo;
 import models.User;
-import play.Play;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;

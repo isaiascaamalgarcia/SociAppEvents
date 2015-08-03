@@ -22,11 +22,13 @@ create table event (
 
 create table photo (
   id                        integer not null,
+  event_id                  integer not null,
   title                     varchar(255),
   description               varchar(255),
   base64                    TEXT,
   type                      varchar(255),
   date_photo                timestamp,
+  url                       varchar(255),
   user_id                   integer,
   constraint pk_photo primary key (id))
 ;
@@ -57,8 +59,10 @@ alter table access_token add constraint fk_access_token_user_1 foreign key (user
 create index ix_access_token_user_1 on access_token (user_id);
 alter table event add constraint fk_event_host_2 foreign key (host_id) references user (id) on delete restrict on update restrict;
 create index ix_event_host_2 on event (host_id);
-alter table photo add constraint fk_photo_user_3 foreign key (user_id) references user (id) on delete restrict on update restrict;
-create index ix_photo_user_3 on photo (user_id);
+alter table photo add constraint fk_photo_event_3 foreign key (event_id) references event (id) on delete restrict on update restrict;
+create index ix_photo_event_3 on photo (event_id);
+alter table photo add constraint fk_photo_user_4 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_photo_user_4 on photo (user_id);
 
 
 
