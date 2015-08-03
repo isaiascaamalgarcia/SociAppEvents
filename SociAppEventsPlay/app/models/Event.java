@@ -31,8 +31,8 @@ public class Event extends Model {
 
 
     @JsonIgnore
-    @ManyToOne
-    private List<Photo> photos;
+    @OneToMany(cascade = CascadeType.ALL)
+    public static List<Photo> photos;
 
     public List<Photo> getPhotos() {
         return photos;

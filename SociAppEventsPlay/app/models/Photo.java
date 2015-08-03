@@ -15,6 +15,7 @@ public class Photo extends Model {
     @Id
     private Integer id;
     private String title;
+    private String url;
     private String description;
     @Column(columnDefinition = "TEXT")
     private String base64;
@@ -83,5 +84,11 @@ public class Photo extends Model {
         this.datePhoto = datePhoto;
     }
 
+    public String getUrl() {
+        return url;
+    }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
