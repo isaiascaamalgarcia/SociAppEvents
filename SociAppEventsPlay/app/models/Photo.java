@@ -23,7 +23,6 @@ public class Photo extends Model {
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date datePhoto;
-    private String url;
 
     @JsonIgnore
     @ManyToOne

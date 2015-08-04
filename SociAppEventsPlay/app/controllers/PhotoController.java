@@ -80,7 +80,11 @@ public class PhotoController extends Controller {
         String url = "/assets/photo/"+filename;
         photo.setUrl(url);
         photo.save();
-        ArrayList<Photo> newPhoto = new ArrayList<>(event.getPhotos());
+        ArrayList<Photo> newPhoto;
+        if(event.getPhotos() != null)
+            newPhoto = new ArrayList<>(event.getPhotos());
+        else
+            newPhoto = new ArrayList<>();
         newPhoto.add(photo);
         List<Photo> pList = newPhoto;
         event.photos = pList;
