@@ -77,7 +77,7 @@ public class PhotoController extends Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String url = "/assets/photo/"+filename;
+        String url = "/assets/photos/"+filename;
         photo.setUrl(url);
         photo.save();
         ArrayList<Photo> newPhoto;
