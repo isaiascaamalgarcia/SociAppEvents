@@ -14,6 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
@@ -70,15 +71,25 @@ public class PhotoController extends Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        File outputFile = new File("public/photo/"+filename);
+        File outputFile = new File("public/photos/"+filename);
         try {
             ImageIO.write(bImageFromConvert,extension,outputFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String url="/assets/photo/"+filename;
+        String url = "/assets/photos/"+filename;
         photo.setUrl(url);
         photo.save();
+        ArrayList<Photo> newPhoto;
+        if(event.getPhotos() != null)
+            newPhoto = new ArrayList<>(event.getPhotos());
+        else
+            newPhoto = new ArrayList<>();
+        newPhoto.add(photo);
+        List<Photo> pList = newPhoto;
+        event.photos = pList;
+        event.update();
+
         return ok(Json.toJson(photo));
     }
 

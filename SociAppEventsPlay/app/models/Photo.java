@@ -15,6 +15,7 @@ public class Photo extends Model {
     @Id
     private Integer id;
     private String title;
+    private String url;
     private String description;
     @Column(columnDefinition = "TEXT")
     private String base64;
@@ -22,7 +23,6 @@ public class Photo extends Model {
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date datePhoto;
-    private String url;
 
     @JsonIgnore
     @ManyToOne
