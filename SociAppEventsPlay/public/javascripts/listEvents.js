@@ -16,13 +16,26 @@ $.ajax({
 
     for(var i = 0; i<events.length; i++){
     var trid='rec-'+events[i].id;
-        html += '<tr id="'+ trid+'" onClick="inviteToEvent('+trid.replace("rec-","")+');">';
-        html += '<td>' + events[i].name + '</td>';
+        //html += '<tr id="'+ trid+'" onClick="inviteToEvent('+trid.replace("rec-","")+');">';
+        html += '<td>' + events[i].name + ' <button class="btn btn-info photo" data-id="'+events[i].id+'" style="float:right;" onClick="metodo('+trid.replace("rec-","")+');">Agregar Foto</button><button class="btn btn-info user" style="float:right" onClick="inviteToEvent('+trid.replace("rec-","")+');">Invitar</button></td>';
         html += '</tr>';
     }
     html += '</table>';
 
     $eventDiv.html(html);
+
+    for(var i=0;i<events.length;i++){
+        var event = events[i];
+        var trid='evento'+event.id;
+        var $tr=$('#'+trid);
+
+        var $editButton = $('.photo', $tr);
+        $editButton.click(function() {
+
+            var id=$(this).atrr('data-id');
+            alert("Photo evento:"+ id);
+        });
+    }
 
   },
     error:function(){
