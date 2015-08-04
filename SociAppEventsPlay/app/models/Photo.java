@@ -19,6 +19,8 @@ public class Photo extends Model {
     private String description;
     @Column(columnDefinition = "TEXT")
     private String base64;
+    @Column(columnDefinition = "TEXT")
+    private String base64Small;
     private String type;
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -91,5 +93,13 @@ public class Photo extends Model {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getBase64Small() {
+        return base64Small;
+    }
+
+    public void setBase64Small(String base64Small) {
+        this.base64Small = base64Small;
     }
 }

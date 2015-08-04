@@ -26,6 +26,7 @@ create table photo (
   url                       varchar(255),
   description               varchar(255),
   base64                    TEXT,
+  base64small               TEXT,
   type                      varchar(255),
   date_photo                timestamp,
   user_id                   integer,

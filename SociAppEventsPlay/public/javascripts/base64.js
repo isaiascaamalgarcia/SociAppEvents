@@ -4,6 +4,7 @@ console.log("POST PHOTO");
 var globalNombreImagen="";
 var globalBase64="";
 var globalBase64Small="";
+var extensionImage="";
 var aux=false;
 
 $savePhoto.click(function(evt) {
@@ -15,14 +16,14 @@ console.log("ENTRO PHOTO");
             var nombre = document.getElementById('title').value;
             var descripcion = document.getElementById('description').value;
             var dayfecha = document.getElementById('fecha').value;
-            var desc = document.getElementById('desc').value;
 
-            var myObj = {name:nombre, day:dayfecha, description:desc};
-
+            var myObj = {title:nombre, url:"", description:descripcion, base64:globalBase64,
+            base64Small:globalBase64Small, type:extensionImage, datePhoto:dayfecha};
 
             console.log(myObj);
+            console.log(dayfecha);
                $.ajax({
-                    url:'/users/'+localStorage.getItem('idUser')+'/my-events',
+                    url:'/users/'+localStorage.getItem('idUser')+'/events/'+eventId+'/photos',
                     headers: {ACCESS_TOKEN : localStorage.getItem('token')},
                     type :  "POST",
                     contentType: 'application/json',
@@ -36,36 +37,33 @@ console.log("ENTRO PHOTO");
                     console.log("An error ocurred");
                     }
             });
-             location.reload();
+             loscation.reload();
         }
 });
 
 function validation() {
-    var nombre = document.getElementById('nameEvent').value;
-    var fecha = document.getElementById('dateEvent').value;
-    var desc = document.getElementById('desc').value;
+     var nombre = document.getElementById('title').value;
+     var descripcion = document.getElementById('description').value;
+     var dayfecha = document.getElementById('fecha').value;
 
     if(nombre== "") {
         alert("Ingresa Nombre de Evento.");
         console.log("VACIO ");
         return false;
     }
-    if(fecha==""){
+    if(dayfecha==""){
         alert("Ingrese Fecha.");
         console.log("VACIO ");
         pass.focus();
         return false;
     }
-    if(desc== "") {
+    if(descripcion== "") {
        alert("Ingrese Descripcion evento.");
                console.log("VACIO ");
         return false;
     }
     return true;
 }
-
-
-
 
 
 function encodeImage(){
@@ -76,10 +74,11 @@ console.log(photoFile);
             var reader = new FileReader();
             reader.onload = function(){
             var dataURL = reader.result;
-             var output = document.getElementById('imgTest');
+            var output = document.getElementById('imgTest');
 
-/*var d = new Date();
-document.getElementById("fecha").value = d.toDateString();*/
+           var now = new Date();
+           var todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+           document.getElementById("fecha").value =   todayUTC.toISOString().slice(0, 10).replace(/-/g, '-');
 
       output.src = dataURL;
       var canvas = document.createElement('canvas');
@@ -104,10 +103,12 @@ document.getElementById("fecha").value = d.toDateString();*/
             }
     var finalFile = canvas.toDataURL("image/"+extImg);
             var stringBase64 = dataURL.substring(indice+8);
+            var base64Small=finalFile.replace("data:image/"+extImg+";base64,", "");
             console.log("La extension es: "+extImg+" la cadena base64 de la img grande es "+stringBase64);
-            console.log("La extension es: "+extImg+" la cadena base64 de la img pequeña es "+finalFile.replace("data:image/"+extImg+";base64,", ""));
+            console.log("La extension es: "+extImg+" la cadena base64 de la img pequeña es "+base64Small);
             globalBase64=stringBase64;
-            globalBase64Small
+            globalBase64Small=base64Small;
+            extensionImage=extImg;
     };
    reader.readAsDataURL(photoFile);
 };
