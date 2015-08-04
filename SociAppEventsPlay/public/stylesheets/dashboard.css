@@ -12,7 +12,7 @@ body {
 .navbar .nav >li > a:hover {
     color:  #B0CEC4;
 }
-.event table {
+.event table, #listadoUser table {
 	margin: 0 auto;
 }
 .form__field {
@@ -93,3 +93,37 @@ textarea {
 .image {
 	margin: 0 auto;
 }
+ table {
+        color: #333;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 640px;
+        border-collapse:
+        collapse; border-spacing: 0;
+
+        }
+
+        td, th {
+        border: 1px solid transparent;
+        height: 30px;
+        transition: all 0.3s;
+        width: 100%;
+        margin-top: 2em;
+        }
+
+        th {
+        background: #DFDFDF;
+        font-weight: bold;
+        }
+
+        td {
+        background: red;
+        text-align: center;
+        }
+
+
+        tr:nth-child(even) td { background: #F1F1F1; }
+
+
+        tr:nth-child(odd) td { background: #FEFEFE; }
+
+        tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */

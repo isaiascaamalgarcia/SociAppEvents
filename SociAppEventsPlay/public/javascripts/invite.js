@@ -28,7 +28,7 @@ $.ajax({
     for(var i = 0; i<users.length; i++){
     var trid='rec-'+users[i].id;
         html += '<tr id="'+ trid+'">';
-        html += "<td><button onclick=\"(inviteUser('" + users[i].email + " '))\">" + users[i].name + "</button></td>";
+        html += "<td><button class='btn btn-info' onclick=\"(inviteUser('" + users[i].email + " '))\">" + users[i].name + "</button></td>";
         html += '</tr>';
     }
     html += '</table>';
