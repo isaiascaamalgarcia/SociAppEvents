@@ -16,6 +16,7 @@ public class Photo extends Model {
     private Integer id;
     private String title;
     private String url;
+    private String urlSmall;
     private String description;
     @Column(columnDefinition = "TEXT")
     private String base64;
@@ -101,5 +102,13 @@ public class Photo extends Model {
 
     public void setBase64Small(String base64Small) {
         this.base64Small = base64Small;
+    }
+
+    public String getUrlSmall() {
+        return urlSmall;
+    }
+
+    public void setUrlSmall(String urlSmall) {
+        this.urlSmall = urlSmall;
     }
 }

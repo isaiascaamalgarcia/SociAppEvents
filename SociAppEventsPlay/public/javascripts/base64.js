@@ -1,3 +1,15 @@
+var idEvent = getUrlVars()["idEvent"];
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+    function(m,key,value) {
+        vars[key] = value;
+        });
+    return vars;
+}
+
+
 var $savePhoto = $('#saveImagen');
 console.log("POST PHOTO");
 
@@ -17,13 +29,13 @@ console.log("ENTRO PHOTO");
             var descripcion = document.getElementById('description').value;
             var dayfecha = document.getElementById('fecha').value;
 
-            var myObj = {title:nombre, url:"", description:descripcion, base64:globalBase64,
+            var myObj = {title:nombre, url:"", urlSmall:"", description:descripcion, base64:globalBase64,
             base64Small:globalBase64Small, type:extensionImage, datePhoto:dayfecha};
 
             console.log(myObj);
             console.log(dayfecha);
                $.ajax({
-                    url:'/users/'+localStorage.getItem('idUser')+'/events/'+eventId+'/photos',
+                    url:'/users/'+localStorage.getItem('idUser')+'/events/'+idEvent+'/photos',
                     headers: {ACCESS_TOKEN : localStorage.getItem('token')},
                     type :  "POST",
                     contentType: 'application/json',

@@ -24,6 +24,7 @@ create table photo (
   id                        integer not null,
   title                     varchar(255),
   url                       varchar(255),
+  url_small                 varchar(255),
   description               varchar(255),
   base64                    TEXT,
   base64small               TEXT,

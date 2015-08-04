@@ -59,27 +59,43 @@ public class PhotoController extends Controller {
         Photo photo = Json.fromJson(request().body().asJson(), Photo.class);
 
         String base64 = photo.getBase64();
+        String base64Small = photo.getBase64Small();
+
         byte[] bytes = Base64.getDecoder().decode(base64);
-        System.out.println("IMAGEN DECODER " + bytes);
+        System.out.println("IMAGEN DECODER 1 " + bytes);
+
+        byte[] bytesSmall = Base64.getDecoder().decode(base64Small);
+        System.out.println("IMAGEN DECODER 2 " + bytesSmall);
+
         String randomName = UUID.randomUUID().toString();
         String extension = photo.getType();
         String filename = randomName + "." + extension;
+
         InputStream in = new ByteArrayInputStream(bytes);
+        InputStream inSmall = new ByteArrayInputStream(bytesSmall);
         BufferedImage bImageFromConvert = null;
+        BufferedImage bImageFromConvertSmall = null;
         try {
             bImageFromConvert = ImageIO.read(in);
+            bImageFromConvertSmall = ImageIO.read(inSmall);
         } catch (IOException e) {
             e.printStackTrace();
         }
         File outputFile = new File("public/photos/"+filename);
+        File outputFileSmall = new File("public/photos_small/"+filename);
         try {
             ImageIO.write(bImageFromConvert,extension,outputFile);
+            ImageIO.write(bImageFromConvert,extension,outputFileSmall);
         } catch (IOException e) {
             e.printStackTrace();
         }
         String url = "/assets/photos/"+filename;
+        String urlSmall = "/assets/photos_small/"+filename;
         photo.setUrl(url);
+        photo.setUrlSmall(urlSmall);
         photo.save();
+
+
         ArrayList<Photo> newPhoto;
         if(event.getPhotos() != null)
             newPhoto = new ArrayList<>(event.getPhotos());

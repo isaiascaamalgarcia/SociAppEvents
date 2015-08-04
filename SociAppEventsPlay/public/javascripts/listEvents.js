@@ -52,3 +52,11 @@ function inviteToEvent(idEvent){
             }
 
 }
+
+function metodo(idEvent){
+    var tokenStorageValue = localStorage.getItem('token');
+    console.log("verificando token");
+            if(tokenStorageValue) {
+                location.href="image.html?idEvent="+idEvent;
+            }
+}
