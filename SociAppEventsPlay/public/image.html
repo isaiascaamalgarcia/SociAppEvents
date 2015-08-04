@@ -89,7 +89,7 @@
         </div>
         <div class="form__field">
             <label for="" class="glyphicon glyphicon-calendar"></label>
-            <input id="fecha" type="date" class="form__input">
+            <input id="fecha" type="date" class="form__input" name="Date" disabled>
         </div>
         <img id="imgTest">
 
@@ -112,4 +112,18 @@
 <script src="libs/jquery-1.11.3.min.js"></script>
 <script src="javascripts/clear.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready( function() {
+    var now = new Date();
+    var month = (now.getMonth() + 1);               
+    var day = now.getDate();
+    if(month < 10) 
+        month = "0" + month;
+    if(day < 10) 
+        day = "0" + day;
+    var today = now.getFullYear() + '-' + month + '-' + day;
+    $('#fecha').val(today);
+});
+    
+</script>
 </html>
